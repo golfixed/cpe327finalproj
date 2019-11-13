@@ -21,4 +21,10 @@ export default {
 .main-body {
   font-family: "Roboto";
 }
+a {
+  text-decoration: none;
+}
+a:focus {
+  outline: none;
+}
 </style>

@@ -4,7 +4,6 @@
       <div>
         <img src="/static/img/Logo.png" class="toolbar-logo" />
       </div>
-      <h2 class="page-title">Page Title</h2>
     </div>
     <div class="rightbox">
       <div class="toolbar-btn" style="    padding: 0 16px;">
@@ -39,17 +38,7 @@ export default {
   width: 50px;
   margin-right: 20px;
 }
-.page-title {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 36px;
-  line-height: 42px;
-  display: flex;
-  align-items: flex-end;
-  color: rgba(0, 0, 0, 0.75);
-  margin: 0;
-}
+
 .toolbar {
   height: 90px;
   position: relative;

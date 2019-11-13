@@ -1,20 +1,20 @@
 <template>
   <div>
-    <h2 class="page-title">Promotions</h2>
+    <h2 class="page-title">Special Deals</h2>
     <div class="tabbar">
       <ul class="tab-container">
         <router-link to="/customer/promotion">
-          <li class="tab-item-selected">Promotions</li>
+          <li class="tab-item">Promotions</li>
         </router-link>
         <router-link to="/customer/deal">
-          <li class="tab-item">Deals</li>
+          <li class="tab-item-selected">Deals</li>
         </router-link>
       </ul>
     </div>
     <div class="display-area">
       <ul class="card-tray">
-        <li class="promo-card" v-for="(data, i) in promotionList" :key="i">
-          <img class="promo-img" :src="data['pictureURL']" />
+        <li class="deal-card" v-for="(data, i) in dealList" :key="i">
+          <img class="deal-img" :src="data['pictureURL']" />
         </li>
       </ul>
     </div>
@@ -30,18 +30,18 @@ export default {
   },
   data() {
     return {
-      promotionList: [
+      dealList: [
         {
-          promotionID: 1,
-          pictureURL: "./static/img/promotions/promo1.png"
+          dealID: 1,
+          pictureURL: "./static/img/deals/deal1.png"
         },
         {
-          promotionID: 2,
-          pictureURL: "./static/img/promotions/promo2.png"
+          dealID: 2,
+          pictureURL: "./static/img/deals/deal2.png"
         },
         {
-          promotionID: 3,
-          pictureURL: "./static/img/promotions/promo3.png"
+          dealID: 3,
+          pictureURL: "./static/img/deals/deal3.png"
         }
       ]
     };
@@ -50,10 +50,11 @@ export default {
 </script>
 
 <style scoped>
-.promo-img {
+.deal-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 50% 0%;
 }
 .display-area {
   height: calc(100vh - 270px);
@@ -68,16 +69,17 @@ export default {
   overflow-y: hidden;
   white-space: nowrap;
 }
-.promo-card {
-  width: 700px;
+.deal-card {
+  width: 333px;
   height: 400px;
   background-color: #ff8303;
   margin-right: 20px;
   display: inline-block;
   border-radius: 20px;
   overflow: hidden;
+  border: 1px solid #bababa;
 }
-.promo-card:first-child {
+.deal-card:first-child {
   margin-left: 20px;
 }
 .tab-container {

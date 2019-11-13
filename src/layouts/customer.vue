@@ -64,4 +64,19 @@ export default {
   position: absolute;
   bottom: 0;
 }
+.page-title {
+  position: absolute;
+  top: 20px;
+  left: 90px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 42px;
+  display: flex;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.75);
+  margin: 0;
+  height: 50px;
+}
 </style>
