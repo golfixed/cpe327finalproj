@@ -35,7 +35,7 @@ export default {
 <style scoped>
 .menubar {
   max-height: 100px;
-  padding: 20px;
+  padding: 0 20px 20px 20px;
   display: flex;
   position: relative;
 }
@@ -70,7 +70,6 @@ export default {
   border-radius: 10000px;
   position: absolute;
   right: 20px;
-  top: 20px;
   height: 60px;
   width: fit-content;
   padding: 0 20px;

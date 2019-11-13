@@ -7,7 +7,7 @@
 <script>
 import layout_main from "@/layouts/customer.vue";
 export default {
-  name: "view-customer",
+  name: "view-customer-home",
   created() {
     this.$emit(`update:layout`, layout_main);
   }

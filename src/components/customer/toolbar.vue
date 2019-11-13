@@ -2,12 +2,12 @@
   <div class="toolbar">
     <div class="leftbox">
       <div>
-        <img src="/static/img/logo.png" class="toolbar-logo" />
+        <img src="/static/img/Logo.png" class="toolbar-logo" />
       </div>
       <h2 class="page-title">Page Title</h2>
     </div>
     <div class="rightbox">
-      <div class="toolbar-btn">
+      <div class="toolbar-btn" style="    padding: 0 16px;">
         <i class="fas fa-question-circle btn-icon-grey" style="margin:0;"></i>
       </div>
       <div class="toolbar-btn">

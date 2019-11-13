@@ -16,7 +16,7 @@
 import menubar from "@/components/customer/menubar.vue";
 import toolbar from "@/components/customer/toolbar.vue";
 export default {
-  name: "main-layout",
+  name: "cutomer-tablet-screen",
   components: {
     menubar,
     toolbar

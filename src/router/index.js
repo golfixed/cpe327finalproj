@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 const Home = () => import('@/views/home')
 const Customer_Home = () => import('@/views/customer/home')
+const Customer_Promotion = () => import('@/views/customer/promotion')
 
 Vue.use(Router)
 
@@ -16,6 +17,11 @@ const router = new Router({
             path: '/customer/home',
             name: 'Customer Home',
             component: Customer_Home,
+        },
+        {
+            path: '/customer/promotion',
+            name: 'Customer Promotion',
+            component: Customer_Promotion,
         }
     ]
 })
