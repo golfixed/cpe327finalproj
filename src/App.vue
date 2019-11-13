@@ -18,4 +18,7 @@ export default {
 </script>
 
 <style>
+.main-body {
+  font-family: "Roboto";
+}
 </style>
