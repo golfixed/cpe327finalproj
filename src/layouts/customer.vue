@@ -3,7 +3,7 @@
     <div>
       <toolbar />
     </div>
-    <div>
+    <div class="display-slot">
       <slot />
     </div>
     <div class="menubar-layout">
@@ -25,9 +25,22 @@ export default {
 </script>
 
 <style>
+.customer-home-grid {
+  display: grid;
+  grid-template-rows: 40px 1fr;
+  width: 100vw;
+  height: 100%;
+}
+.display-slot {
+  width: 100vw;
+}
 #layout-customer {
   padding: 0;
   margin: 0;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 90px 1fr 80px;
+  height: 100vh;
 }
 .btn-text,
 .btn-icon {
@@ -61,8 +74,6 @@ export default {
 }
 .menubar-layout {
   width: 100vw;
-  position: absolute;
-  bottom: 0;
 }
 .page-title {
   position: absolute;
@@ -75,7 +86,7 @@ export default {
   line-height: 42px;
   display: flex;
   align-items: center;
-  color: rgba(0, 0, 0, 0.75);
+  color: #515151;
   margin: 0;
   height: 50px;
 }

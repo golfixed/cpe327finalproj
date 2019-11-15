@@ -6,12 +6,77 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-  <title>Welcome | iRMS Homepage</title>
+  <title>iRMS</title>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+
+
+
+
+  <link rel="shortcut icon" href="/static/favicon/favicon.ico">
+  <link rel="icon" sizes="16x16 32x32 64x64" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="196x196" href="/static/favicon/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="160x160" href="/static/favicon/favicon-160.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/static/favicon/favicon-96.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/static/favicon/favicon-64.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16.png">
+  <link rel="apple-touch-icon" href="/static/favicon/favicon-57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/static/favicon/favicon-114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/static/favicon/favicon-72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/static/favicon/favicon-144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/static/favicon/favicon-60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/static/favicon/favicon-120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/static/favicon/favicon-76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/static/favicon/favicon-152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/favicon-180.png">
+  <meta name="msapplication-TileColor" content="#FFFFFF">
+  <meta name="msapplication-TileImage" content="/static/favicon/favicon-144.png">
+  <meta name="msapplication-config" content="/browserconfig.xml">
+
+
+  <script>
+    document.addEventListener('touchmove', function (event) {
+      if (event.scale !== 1) {
+        event.preventDefault();
+      }
+    }, {
+      passive: false
+    });
+  </script>
+  <script>
+    var lastTouchEnd = 0;
+    document.addEventListener('touchend', function (event) {
+      var now = (new Date()).getTime();
+      if (now - lastTouchEnd <= 300) {
+        event.preventDefault();
+      }
+      lastTouchEnd = now;
+    }, false);
+  </script>
+  <style>
+    button,
+    textarea,
+    input,
+    select,
+    a {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      -webkit-tap-highlight-color: transparent;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+
+    }
+  </style>
 </head>
 
-<body style="margin:0;padding:0;overflow: hidden;text-decoration: none;">
+<body style="margin:0;padding:0;overflow: hidden;height: 100vh;">
   <noscript>
     <strong>We're sorry but cpe327finalproj doesn't work properly without JavaScript enabled. Please enable it to
       continue.</strong>

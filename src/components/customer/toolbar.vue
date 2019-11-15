@@ -2,11 +2,13 @@
   <div class="toolbar">
     <div class="leftbox">
       <div>
-        <img src="/static/img/Logo.png" class="toolbar-logo" />
+        <router-link to="/customer/home">
+          <img src="/static/img/Logo.png" class="toolbar-logo" />
+        </router-link>
       </div>
     </div>
     <div class="rightbox">
-      <div class="toolbar-btn" style="    padding: 0 16px;">
+      <div class="toolbar-btn" style="padding: 0 16px;">
         <i class="fas fa-question-circle btn-icon-grey" style="margin:0;"></i>
       </div>
       <div class="toolbar-btn">
@@ -41,7 +43,6 @@ export default {
 
 .toolbar {
   height: 90px;
-  position: relative;
 }
 .rightbox {
   position: absolute;

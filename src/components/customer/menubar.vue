@@ -2,21 +2,31 @@
   <div class="menubar">
     <div class="menulist">
       <ul class="menulist-list">
-        <li class="menu-item">
-          <i class="fas fa-percentage menu-icon"></i>Promotions
-        </li>
-        <li class="menu-item">
-          <i class="fas fa-utensils menu-icon"></i>Sets
-        </li>
-        <li class="menu-item">
-          <i class="fas fa-drumstick-bite menu-icon"></i>A' La Carte
-        </li>
-        <li class="menu-item">
-          <i class="fas fa-pizza-slice menu-icon"></i>Appitizer
-        </li>
-        <li class="menu-item">
-          <i class="fas fa-coffee menu-icon"></i>Drinks
-        </li>
+        <router-link to="/customer/promotion" class="menu-link">
+          <li class="menu-item">
+            <i class="fas fa-percentage menu-icon"></i>Promotions
+          </li>
+        </router-link>
+        <router-link to="/customer/set" class="menu-link">
+          <li class="menu-item">
+            <i class="fas fa-utensils menu-icon"></i>Sets
+          </li>
+        </router-link>
+        <router-link to="/customer/alacarte" class="menu-link">
+          <li class="menu-item">
+            <i class="fas fa-drumstick-bite menu-icon"></i>A' La Carte
+          </li>
+        </router-link>
+        <router-link to="/customer/appitizer" class="menu-link">
+          <li class="menu-item">
+            <i class="fas fa-pizza-slice menu-icon"></i>Appitizer
+          </li>
+        </router-link>
+        <router-link to="/customer/drink" class="menu-link">
+          <li class="menu-item">
+            <i class="fas fa-coffee menu-icon"></i>Drinks
+          </li>
+        </router-link>
       </ul>
     </div>
     <div class="order-btn">
@@ -33,11 +43,25 @@ export default {
 </script>
 
 <style scoped>
+.router-link-exact-active,
+.menu-link {
+  display: flex;
+  justify-content: center;
+}
+.router-link-exact-active > li {
+  font-family: Roboto;
+  font-style: normal;
+  /* font-weight: bold; */
+  font-size: 18px;
+  line-height: 21px;
+  color: #ff8303;
+  margin: 0;
+  padding: 0;
+}
 .menubar {
   max-height: 100px;
   padding: 0 20px 20px 20px;
   display: flex;
-  position: relative;
 }
 .menulist {
   background-color: #f6f6f6;
