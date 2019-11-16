@@ -33,13 +33,23 @@
       </ul>
     </div>
     <div class="display-area">
-      <ul class="card-tray" v-if=" currentTab == 'promo'">
-        <li class="promo-card" v-for="(data, i) in promotionList" :key="i">
+      <ul class="card-tray" v-if=" currentTab == 'promo' && currentLang == 'en'">
+        <li class="promo-card" v-for="(data, i) in promotionList_en" :key="i">
           <img class="promo-img" :src="data['pictureURL']" />
         </li>
       </ul>
-      <ul class="card-tray" v-if=" currentTab == 'deal'">
-        <li class="deal-card" v-for="(data, n) in dealList" :key="n">
+      <ul class="card-tray" v-if=" currentTab == 'promo' && currentLang == 'th'">
+        <li class="promo-card" v-for="(data, i) in promotionList_th" :key="i">
+          <img class="promo-img" :src="data['pictureURL']" />
+        </li>
+      </ul>
+      <ul class="card-tray" v-if=" currentTab == 'deal' && currentLang == 'en'">
+        <li class="deal-card" v-for="(data, n) in dealList_en" :key="n">
+          <img class="deal-img" :src="data['pictureURL']" />
+        </li>
+      </ul>
+      <ul class="card-tray" v-if=" currentTab == 'deal' && currentLang == 'th'">
+        <li class="deal-card" v-for="(data, n) in dealList_th" :key="n">
           <img class="deal-img" :src="data['pictureURL']" />
         </li>
       </ul>
@@ -57,32 +67,60 @@ export default {
   data() {
     return {
       currentTab: "promo",
-      promotionList: [
+      promotionList_en: [
         {
           promotionID: 1,
-          pictureURL: "./static/img/promotions/promo1.png"
+          pictureURL: "./static/img/promotions/en1.png"
         },
         {
           promotionID: 2,
-          pictureURL: "./static/img/promotions/promo2.png"
+          pictureURL: "./static/img/promotions/en2.png"
         },
         {
           promotionID: 3,
-          pictureURL: "./static/img/promotions/promo3.png"
+          pictureURL: "./static/img/promotions/en3.png"
         }
       ],
-      dealList: [
+      promotionList_th: [
+        {
+          promotionID: 1,
+          pictureURL: "./static/img/promotions/th1.png"
+        },
+        {
+          promotionID: 2,
+          pictureURL: "./static/img/promotions/th2.png"
+        },
+        {
+          promotionID: 3,
+          pictureURL: "./static/img/promotions/th3.png"
+        }
+      ],
+      dealList_en: [
         {
           dealID: 1,
-          pictureURL: "./static/img/deals/deal1.png"
+          pictureURL: "./static/img/deals/en1.png"
         },
         {
           dealID: 2,
-          pictureURL: "./static/img/deals/deal2.png"
+          pictureURL: "./static/img/deals/en2.png"
         },
         {
           dealID: 3,
-          pictureURL: "./static/img/deals/deal3.png"
+          pictureURL: "./static/img/deals/en3.png"
+        }
+      ],
+      dealList_th: [
+        {
+          dealID: 1,
+          pictureURL: "./static/img/deals/th1.png"
+        },
+        {
+          dealID: 2,
+          pictureURL: "./static/img/deals/th2.png"
+        },
+        {
+          dealID: 3,
+          pictureURL: "./static/img/deals/th3.png"
         }
       ]
     };
@@ -90,6 +128,11 @@ export default {
   methods: {
     switchTab: function(target) {
       this.currentTab = target;
+    }
+  },
+  computed: {
+    currentLang: function() {
+      return this.$i18n.locale;
     }
   }
 };
