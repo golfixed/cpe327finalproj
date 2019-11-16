@@ -25,6 +25,12 @@ export default {
 </script>
 
 <style>
+.customer-menu-grid {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  width: 100vw;
+  height: 100%;
+}
 .customer-home-grid {
   display: grid;
   grid-template-rows: 40px 1fr;

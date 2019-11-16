@@ -15,16 +15,16 @@
         </h4>
         <div class="lang-tray">
           <router-link to="/customer/promotion" class="lang-item" v-on:click="switchLang('en');">
-            <img src="/static/img/langs/english.png" />
-            <h5 class="lang-label">English</h5>
+            <img src="/static/img/langs/english.png" v-on:click="switchLang('en');" />
+            <h5 class="lang-label" v-on:click="switchLang('en');">English</h5>
           </router-link>
           <router-link to="/customer/promotion" class="lang-item" v-on:click="switchLang('th');">
-            <img src="/static/img/langs/thai.png" />
-            <h5 class="lang-label">ภาษาไทย</h5>
+            <img src="/static/img/langs/thai.png" v-on:click="switchLang('th');" />
+            <h5 class="lang-label" v-on:click="switchLang('th');">ภาษาไทย</h5>
           </router-link>
           <router-link to="/customer/promotion" class="lang-item" v-on:click="switchLang('ch');">
-            <img src="/static/img/langs/chinese.png" />
-            <h5 class="lang-label">中文</h5>
+            <img src="/static/img/langs/chinese.png" v-on:click="switchLang('ch');" />
+            <h5 class="lang-label" v-on:click="switchLang('ch');">中文</h5>
           </router-link>
         </div>
       </div>

@@ -4,6 +4,7 @@ import Router from 'vue-router'
 const Home = () => import('@/views/home')
 const Customer_Home = () => import('@/views/customer/home')
 const Customer_Promotion = () => import('@/views/customer/promotion')
+const Customer_Set = () => import('@/views/customer/set')
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ const router = new Router({
             path: '/customer/promotion',
             name: 'Customer Promotion',
             component: Customer_Promotion,
+        },
+        {
+            path: '/customer/set',
+            name: 'Customer Set',
+            component: Customer_Set,
         }
     ]
 })

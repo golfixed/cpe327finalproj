@@ -4,34 +4,39 @@
       <ul class="menulist-list">
         <router-link to="/customer/promotion" class="menu-link">
           <li class="menu-item">
-            <i class="fas fa-percentage menu-icon"></i>Promotions
+            <i class="fas fa-percentage menu-icon"></i>
+            {{ $t("messages.menubar.item1") }}
           </li>
         </router-link>
         <router-link to="/customer/set" class="menu-link">
           <li class="menu-item">
-            <i class="fas fa-utensils menu-icon"></i>Sets
+            <i class="fas fa-utensils menu-icon"></i>
+            {{ $t("messages.menubar.item2") }}
           </li>
         </router-link>
         <router-link to="/customer/alacarte" class="menu-link">
           <li class="menu-item">
-            <i class="fas fa-drumstick-bite menu-icon"></i>A' La Carte
+            <i class="fas fa-drumstick-bite menu-icon"></i>
+            {{ $t("messages.menubar.item3") }}
           </li>
         </router-link>
         <router-link to="/customer/appitizer" class="menu-link">
           <li class="menu-item">
-            <i class="fas fa-pizza-slice menu-icon"></i>Appitizer
+            <i class="fas fa-pizza-slice menu-icon"></i>
+            {{ $t("messages.menubar.item4") }}
           </li>
         </router-link>
         <router-link to="/customer/drink" class="menu-link">
           <li class="menu-item">
-            <i class="fas fa-coffee menu-icon"></i>Drinks
+            <i class="fas fa-coffee menu-icon"></i>
+            {{ $t("messages.menubar.item5") }}
           </li>
         </router-link>
       </ul>
     </div>
     <div class="order-btn">
       <i class="fas fa-list btn-icon"></i>
-      <label class="btn-text">Order List</label>
+      <label class="btn-text">{{ $t("messages.menubar.orderBtn") }}</label>
     </div>
   </div>
 </template>
