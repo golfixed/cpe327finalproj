@@ -19,7 +19,7 @@ export default {
 
 <style>
 .main-body {
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
 }
 a {
   text-decoration: none;

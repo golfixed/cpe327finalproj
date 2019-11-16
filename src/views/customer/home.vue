@@ -14,15 +14,15 @@
           <br />เลือกภาษาเพื่อดำเนินการต่อ
         </h4>
         <div class="lang-tray">
-          <router-link to="/customer/promotion" class="lang-item">
+          <router-link to="/customer/promotion" class="lang-item" v-on:click="switchLang('en');">
             <img src="/static/img/langs/english.png" />
             <h5 class="lang-label">English</h5>
           </router-link>
-          <router-link to="/customer/promotion" class="lang-item">
+          <router-link to="/customer/promotion" class="lang-item" v-on:click="switchLang('th');">
             <img src="/static/img/langs/thai.png" />
             <h5 class="lang-label">ภาษาไทย</h5>
           </router-link>
-          <router-link to="/customer/promotion" class="lang-item">
+          <router-link to="/customer/promotion" class="lang-item" v-on:click="switchLang('ch');">
             <img src="/static/img/langs/chinese.png" />
             <h5 class="lang-label">中文</h5>
           </router-link>
@@ -38,6 +38,11 @@ export default {
   name: "view-customer-home",
   created() {
     this.$emit(`update:layout`, layout_main);
+  },
+  methods: {
+    switchLang: function(lang) {
+      this.$i18n.locale = lang;
+    }
   }
 };
 </script>
@@ -66,7 +71,6 @@ export default {
   overflow: hidden;
 }
 .title {
-  font-family: Roboto;
   font-style: normal;
   font-weight: bold;
   font-size: 45px;
@@ -79,31 +83,11 @@ export default {
   margin: 0;
 }
 .lang-desc {
-  font-family: Roboto;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
   line-height: 21px;
   text-align: center;
   color: #515151;
-}
-.lang-tray {
-  display: flex;
-  justify-content: center;
-}
-.lang-item {
-  display: block;
-  margin: 0 25px;
-}
-.lang-label {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 21px;
-  text-align: center;
-  color: #8c8c8c;
-  margin-top: 10px;
-  margin-bottom: 0;
 }
 </style>

@@ -49,7 +49,6 @@ export default {
   justify-content: center;
 }
 .router-link-exact-active > li {
-  font-family: Roboto;
   font-style: normal;
   /* font-weight: bold; */
   font-size: 18px;
@@ -83,7 +82,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: Roboto;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;

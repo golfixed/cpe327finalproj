@@ -1,16 +1,34 @@
 <template>
   <div class="customer-home-grid">
-    <h2 class="page-title" v-if=" currentTab == 'promo'">Promotions</h2>
-    <h2 class="page-title" v-if=" currentTab == 'deal'">Special Deal</h2>
+    <h2
+      class="page-title"
+      v-if=" currentTab == 'promo'"
+    >{{ $t("messages.pageTitle.promotion.promo") }}</h2>
+    <h2
+      class="page-title"
+      v-if=" currentTab == 'deal'"
+    >{{ $t("messages.pageTitle.promotion.deal") }}</h2>
     <div class="tabbar">
       <ul class="tab-container">
         <div v-on:click="switchTab('promo')">
-          <li class="tab-item" v-if=" currentTab == 'deal'">Promotions</li>
-          <li class="tab-item-selected" v-if=" currentTab == 'promo'">Promotions</li>
+          <li
+            class="tab-item"
+            v-if=" currentTab == 'deal'"
+          >{{ $t("messages.pageTitle.promotion.promo") }}</li>
+          <li
+            class="tab-item-selected"
+            v-if=" currentTab == 'promo'"
+          >{{ $t("messages.pageTitle.promotion.promo") }}</li>
         </div>
         <div v-on:click="switchTab('deal')">
-          <li class="tab-item" v-if=" currentTab == 'promo'">Deals</li>
-          <li class="tab-item-selected" v-if=" currentTab == 'deal'">Deals</li>
+          <li
+            class="tab-item"
+            v-if=" currentTab == 'promo'"
+          >{{ $t("messages.pageTitle.promotion.deal") }}</li>
+          <li
+            class="tab-item-selected"
+            v-if=" currentTab == 'deal'"
+          >{{ $t("messages.pageTitle.promotion.deal") }}</li>
         </div>
       </ul>
     </div>
@@ -148,7 +166,6 @@ export default {
 .tab-item,
 .tab-item-selected {
   height: 40px;
-  font-family: Roboto;
   font-style: normal;
   margin: 0 10px;
   font-size: 18px;
