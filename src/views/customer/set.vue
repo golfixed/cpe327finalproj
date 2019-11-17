@@ -1,10 +1,43 @@
 <template>
-  <div>
+  <div class="withouttab-display">
     <h2 class="page-title">{{ $t("messages.pageTitle.set") }}</h2>
-    <div class="display-area">
+    <div class="display-area" v-if="currentLang == 'en'">
       <ul class="card-tray">
-        <li class="menu-card" v-for="(data, i) in promotionList" :key="i">
-          <img class="menu-img" :src="data['pictureURL']" />
+        <li class="menu-set-card" v-for="(data, i) in menu_setList_en" :key="i">
+          <img class="menu-set-img" :src="data['pictureURL']" />
+          <div class="menu-set-card-detail">
+            <h2 class="set-name">{{data['setTitle']}}</h2>
+            <h5 class="set-items">{{data.setItem1['count']}} × {{data.setItem1['itemName']}}</h5>
+            <h5 class="set-items">{{data.setItem2['count']}} × {{data.setItem2['itemName']}}</h5>
+            <h5 class="set-items">{{data.setItem3['count']}} × {{data.setItem3['itemName']}}</h5>
+          </div>
+          <div>
+            <h4 class="set-price">Price ${{data['price']}}</h4>
+            <button class="btn-add btn-card">
+              <i class="fas fa-plus btn-icon btn-mini-icon"></i>
+              <label class="btn-card-text">ADD</label>
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="display-area" v-if="currentLang == 'th'">
+      <ul class="card-tray">
+        <li class="menu-set-card" v-for="(data, i) in menu_setList_th" :key="i">
+          <img class="menu-set-img" :src="data['pictureURL']" />
+          <div class="menu-set-card-detail">
+            <h2 class="set-name">{{data['setTitle']}}</h2>
+            <h5 class="set-items">{{data.setItem1['count']}} × {{data.setItem1['itemName']}}</h5>
+            <h5 class="set-items">{{data.setItem2['count']}} × {{data.setItem2['itemName']}}</h5>
+            <h5 class="set-items">{{data.setItem3['count']}} × {{data.setItem3['itemName']}}</h5>
+          </div>
+          <div>
+            <h4 class="set-price">ราคา ${{data['price']}}</h4>
+            <button class="btn-add btn-card">
+              <i class="fas fa-plus btn-icon btn-mini-icon"></i>
+              <label class="btn-card-text">เพิ่ม</label>
+            </button>
+          </div>
         </li>
       </ul>
     </div>
@@ -18,32 +51,195 @@ export default {
   created() {
     this.$emit(`update:layout`, layout_main);
   },
+  computed: {
+    currentLang: function() {
+      return this.$i18n.locale;
+    }
+  },
   data() {
     return {
-      promotionList: [
+      menu_setList_en: [
         {
-          promotionID: 1,
-          pictureURL: "./static/img/promotions/promo1.png"
+          menuID: 1,
+          pictureURL: "./static/img/sets/01.png",
+          setTitle: "Cheesy Imsukjai",
+          setItem1: {
+            itemName: "Cheesy Chicken",
+            count: 2
+          },
+          setItem2: {
+            itemName: "Crispy Fish Burger",
+            count: 1
+          },
+          setItem3: {
+            itemName: "Mashed Potato",
+            count: 1
+          },
+          price: 10.99
         },
         {
-          promotionID: 2,
-          pictureURL: "./static/img/promotions/promo2.png"
+          menuID: 2,
+          pictureURL: "./static/img/sets/02.png",
+          setTitle: "Cheesy Imsukjai",
+          setItem1: {
+            itemName: "Cheesy Chicken",
+            count: 2
+          },
+          setItem2: {
+            itemName: "Crispy Fish Burger",
+            count: 1
+          },
+          setItem3: {
+            itemName: "Mashed Potato",
+            count: 1
+          },
+          price: 10.99
         },
         {
-          promotionID: 3,
-          pictureURL: "./static/img/promotions/promo3.png"
+          menuID: 3,
+          pictureURL: "./static/img/sets/03.png",
+          setTitle: "Cheesy Imsukjai",
+          setItem1: {
+            itemName: "Cheesy Chicken",
+            count: 2
+          },
+          setItem2: {
+            itemName: "Crispy Fish Burger",
+            count: 1
+          },
+          setItem3: {
+            itemName: "Mashed Potato",
+            count: 1
+          },
+          price: 10.99
         },
         {
-          promotionID: 4,
-          pictureURL: "./static/img/promotions/promo1.png"
+          menuID: 4,
+          pictureURL: "./static/img/sets/04.png",
+          setTitle: "Cheesy Imsukjai",
+          setItem1: {
+            itemName: "Cheesy Chicken",
+            count: 2
+          },
+          setItem2: {
+            itemName: "Crispy Fish Burger",
+            count: 1
+          },
+          setItem3: {
+            itemName: "Mashed Potato",
+            count: 1
+          },
+          price: 10.99
         },
         {
-          promotionID: 5,
-          pictureURL: "./static/img/promotions/promo2.png"
+          menuID: 5,
+          pictureURL: "./static/img/sets/05.png",
+          setTitle: "Cheesy Imsukjai",
+          setItem1: {
+            itemName: "Cheesy Chicken",
+            count: 2
+          },
+          setItem2: {
+            itemName: "Crispy Fish Burger",
+            count: 1
+          },
+          setItem3: {
+            itemName: "Mashed Potato",
+            count: 1
+          },
+          price: 10.99
+        }
+      ],
+      menu_setList_th: [
+        {
+          menuID: 1,
+          pictureURL: "./static/img/sets/01.png",
+          setTitle: "อิ่มสุขใจได้ชีส",
+          setItem1: {
+            itemName: "ไก่ชีส",
+            count: 2
+          },
+          setItem2: {
+            itemName: "เบอร์เกอร์ปลากรอบ",
+            count: 1
+          },
+          setItem3: {
+            itemName: "มันบด",
+            count: 1
+          },
+          price: 10.99
         },
         {
-          promotionID: 6,
-          pictureURL: "./static/img/promotions/promo3.png"
+          menuID: 2,
+          pictureURL: "./static/img/sets/02.png",
+          setTitle: "อิ่มสุขใจได้ชีส",
+          setItem1: {
+            itemName: "ไก่ชีส",
+            count: 2
+          },
+          setItem2: {
+            itemName: "เบอร์เกอร์ปลากรอบ",
+            count: 1
+          },
+          setItem3: {
+            itemName: "มันบด",
+            count: 1
+          },
+          price: 10.99
+        },
+        {
+          menuID: 3,
+          pictureURL: "./static/img/sets/03.png",
+          setTitle: "อิ่มสุขใจได้ชีส",
+          setItem1: {
+            itemName: "ไก่ชีส",
+            count: 2
+          },
+          setItem2: {
+            itemName: "เบอร์เกอร์ปลากรอบ",
+            count: 1
+          },
+          setItem3: {
+            itemName: "มันบด",
+            count: 1
+          },
+          price: 10.99
+        },
+        {
+          menuID: 4,
+          pictureURL: "./static/img/sets/04.png",
+          setTitle: "อิ่มสุขใจได้ชีส",
+          setItem1: {
+            itemName: "ไก่ชีส",
+            count: 2
+          },
+          setItem2: {
+            itemName: "เบอร์เกอร์ปลากรอบ",
+            count: 1
+          },
+          setItem3: {
+            itemName: "มันบด",
+            count: 1
+          },
+          price: 10.99
+        },
+        {
+          menuID: 5,
+          pictureURL: "./static/img/sets/05.png",
+          setTitle: "อิ่มสุขใจได้ชีส",
+          setItem1: {
+            itemName: "ไก่ชีส",
+            count: 2
+          },
+          setItem2: {
+            itemName: "เบอร์เกอร์ปลากรอบ",
+            count: 1
+          },
+          setItem3: {
+            itemName: "มันบด",
+            count: 1
+          },
+          price: 10.99
         }
       ]
     };
@@ -69,29 +265,72 @@ export default {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  height: 580px;
+  flex-direction: column;
+  flex-grow: 1;
 }
-.menu-card {
-  width: 432px;
-  height: 270px;
-  background-color: #ff8303;
+.menu-set-card {
+  width: 412px;
+  height: 230px;
+  background-color: #f0f0f0;
+  padding: 20px;
   margin-right: 20px;
+  margin-bottom: 20px;
   display: inline-block;
   border-radius: 20px;
   overflow: hidden;
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr 60px;
 }
-.menu-card:first-child {
+.menu-set-card:first-child,
+.menu-set-card:nth-child(2) {
   margin-left: 20px;
 }
-.menu-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 0%;
+
+.menu-set-img {
+  height: 80%;
+  position: absolute;
+  right: -10%;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+.menu-set-card-detail {
+  display: block;
 }
 .display-area {
   display: flex;
   align-items: center;
   width: 100vw;
   overflow: scroll;
+}
+.set-name {
+  font-weight: 900;
+  font-size: 25px;
+  line-height: 28px;
+  color: #000000;
+  margin-bottom: 15px !important;
+}
+.set-items {
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  color: #515151;
+}
+.set-price {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  color: #eb5463;
+  margin-bottom: 10px !important;
+}
+
+.set-name,
+.set-price,
+.set-items {
+  font-family: Roboto;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
 }
 </style>

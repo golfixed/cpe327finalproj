@@ -33,22 +33,22 @@
       </ul>
     </div>
     <div class="display-area">
-      <ul class="card-tray" v-if=" currentTab == 'promo' && currentLang == 'en'">
+      <ul class="promo-card-tray" v-if=" currentTab == 'promo' && currentLang == 'en'">
         <li class="promo-card" v-for="(data, i) in promotionList_en" :key="i">
           <img class="promo-img" :src="data['pictureURL']" />
         </li>
       </ul>
-      <ul class="card-tray" v-if=" currentTab == 'promo' && currentLang == 'th'">
+      <ul class="promo-card-tray" v-if=" currentTab == 'promo' && currentLang == 'th'">
         <li class="promo-card" v-for="(data, i) in promotionList_th" :key="i">
           <img class="promo-img" :src="data['pictureURL']" />
         </li>
       </ul>
-      <ul class="card-tray" v-if=" currentTab == 'deal' && currentLang == 'en'">
+      <ul class="promo-card-tray" v-if=" currentTab == 'deal' && currentLang == 'en'">
         <li class="deal-card" v-for="(data, n) in dealList_en" :key="n">
           <img class="deal-img" :src="data['pictureURL']" />
         </li>
       </ul>
-      <ul class="card-tray" v-if=" currentTab == 'deal' && currentLang == 'th'">
+      <ul class="promo-card-tray" v-if=" currentTab == 'deal' && currentLang == 'th'">
         <li class="deal-card" v-for="(data, n) in dealList_th" :key="n">
           <img class="deal-img" :src="data['pictureURL']" />
         </li>
@@ -150,7 +150,7 @@ export default {
   width: 100vw;
   overflow: scroll;
 }
-.card-tray {
+.promo-card-tray {
   white-space: nowrap;
   list-style-type: none;
   padding: 0;

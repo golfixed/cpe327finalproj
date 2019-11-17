@@ -34,16 +34,62 @@
         </router-link>
       </ul>
     </div>
-    <div class="order-btn">
+    <div class="order-btn" v-on:click="openOrderList();">
       <i class="fas fa-list btn-icon"></i>
       <label class="btn-text">{{ $t("messages.menubar.orderBtn") }}</label>
+    </div>
+
+    <!-- OrderList Panel -->
+    <div class="dim-bg" v-on:click="closeOrderList();" v-if="isOrderListOpen == true"></div>
+    <div class="orderlist-panel" v-if="isOrderListOpen == true">
+      <div class="panel-bg">
+        <h1
+          class="page-title panel-title-text"
+          style="position:unset;"
+        >{{ $t("messages.pageTitle.orderList") }}</h1>
+        <div class="orderlist-display"></div>
+        <div class="button-div">
+          <router-link to="/customer/confirmorder">
+            <button
+              class="btn-popup btn-confirm"
+              style="margin-top: 0;"
+              v-on:click="closeOrderList();"
+            >
+              <i class="fas fa-check btn-icon"></i>
+              <label class="btn-text">{{ $t("messages.buttonText.placeOrder") }}</label>
+            </button>
+          </router-link>
+          <button
+            class="btn-popup btn-white"
+            style="margin-top: 20px;"
+            v-on:click="closeOrderList();"
+          >
+            <i class="fas fa-arrow-left btn-icon-grey"></i>
+            <label class="btn-text-grey">{{ $t("messages.buttonText.back") }}</label>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "menubar"
+  name: "menubar",
+  components: {},
+  data() {
+    return {
+      isOrderListOpen: false
+    };
+  },
+  methods: {
+    openOrderList: function() {
+      this.isOrderListOpen = true;
+    },
+    closeOrderList: function() {
+      this.isOrderListOpen = false;
+    }
+  }
 };
 </script>
 
@@ -102,5 +148,25 @@ export default {
   padding: 0 20px;
   display: flex;
   align-items: center;
+}
+.panel-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  padding: 40px 40px 20px 40px;
+  background: #ffffff;
+  box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.25);
+  width: 370px;
+  height: calc(100vh - 40px);
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: grid;
+  grid-template-rows: 50px 1fr 140px;
+}
+.panel-title-text {
+  color: #ff8303;
+  text-transform: uppercase;
 }
 </style>

@@ -8,7 +8,7 @@ export default {
             set: 'อาหารชุด',
             alacarte: 'จานเดี่ยว',
             appitizer: 'ของว่าง',
-            drink: 'เครื่องื่ม',
+            drink: 'เครื่องดื่ม',
             help: 'คำแนะนำ - ช่วยเหลือ',
             orderList: 'รายการที่สั่ง',
             billSummary: 'สรุปบิล',

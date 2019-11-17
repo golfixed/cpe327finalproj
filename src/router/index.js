@@ -5,6 +5,11 @@ const Home = () => import('@/views/home')
 const Customer_Home = () => import('@/views/customer/home')
 const Customer_Promotion = () => import('@/views/customer/promotion')
 const Customer_Set = () => import('@/views/customer/set')
+const Customer_Alacarte = () => import('@/views/customer/alacarte')
+const Customer_Appitizer = () => import('@/views/customer/appitizer')
+const Customer_Drink = () => import('@/views/customer/drink')
+const Customer_ConfirmOrder = () => import('@/views/customer/orderconfirm')
+
 
 Vue.use(Router)
 
@@ -28,6 +33,26 @@ const router = new Router({
             path: '/customer/set',
             name: 'Customer Set',
             component: Customer_Set,
+        },
+        {
+            path: '/customer/alacarte',
+            name: 'Customer A\' La Carte',
+            component: Customer_Alacarte,
+        },
+        {
+            path: '/customer/appitizer',
+            name: 'Customer Appitizer',
+            component: Customer_Appitizer,
+        },
+        {
+            path: '/customer/drink',
+            name: 'Customer Drinks',
+            component: Customer_Drink,
+        },
+        {
+            path: '/customer/confirmorder',
+            name: 'Customer Confirm Order',
+            component: Customer_ConfirmOrder,
         }
     ]
 })
