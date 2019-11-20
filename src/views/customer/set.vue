@@ -3,7 +3,12 @@
     <h2 class="page-title">{{ $t("messages.pageTitle.set") }}</h2>
     <div class="display-area" v-if="currentLang == 'en'">
       <ul class="card-tray">
-        <li class="menu-set-card" v-for="(data, i) in menu_setList_en" :key="i">
+        <li
+          class="menu-set-card"
+          v-for="(data, i) in menu_setList_en"
+          :key="i"
+          v-on:click="openDetailPanel();"
+        >
           <img class="menu-set-img" :src="data['pictureURL']" />
           <div class="menu-set-card-detail">
             <h2 class="set-name">{{data['setTitle']}}</h2>
@@ -23,7 +28,12 @@
     </div>
     <div class="display-area" v-if="currentLang == 'th'">
       <ul class="card-tray">
-        <li class="menu-set-card" v-for="(data, i) in menu_setList_th" :key="i">
+        <li
+          class="menu-set-card"
+          v-for="(data, i) in menu_setList_th"
+          :key="i"
+          v-on:click="openDetailPanel();"
+        >
           <img class="menu-set-img" :src="data['pictureURL']" />
           <div class="menu-set-card-detail">
             <h2 class="set-name">{{data['setTitle']}}</h2>
@@ -41,15 +51,44 @@
         </li>
       </ul>
     </div>
+    <div class="dim-bg" v-if="isDetailOpen == true" v-on:click="closeDetailPanel();"></div>
+    <div class="detail-container" v-if="isDetailOpen == true">
+      <div class="detail-bg">
+        <setDetail
+          pictureURL="./static/img/sets/01.png"
+          name="Cheesy Imsukjai"
+          desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco."
+          item1name="Cheese Fried Chicken"
+          item1count="2"
+          item2name="Original Fired Chicken"
+          item2count="8"
+          item3name="Mashed Potato"
+          item3count="2"
+          price="10.99"
+        />
+      </div>
+      <button
+        class="btn-popup btn-white"
+        style="margin-top: 20px;width:fit-content;padding: 0 20px;"
+        v-on:click="closeDetailPanel();"
+      >
+        <i class="fas fa-arrow-left btn-icon-grey"></i>
+        <label class="btn-text-grey">{{ $t("messages.buttonText.back") }}</label>
+      </button>
+    </div>
   </div>
 </template>
 
 <script>
 import layout_main from "@/layouts/customer.vue";
+import setDetail from "@/components/customer/setDetail.vue";
 export default {
   name: "view-customer-promotion",
   created() {
     this.$emit(`update:layout`, layout_main);
+  },
+  components: {
+    setDetail
   },
   computed: {
     currentLang: function() {
@@ -58,6 +97,7 @@ export default {
   },
   data() {
     return {
+      isDetailOpen: false,
       menu_setList_en: [
         {
           menuID: 1,
@@ -244,11 +284,37 @@ export default {
       ]
     };
   },
-  methods: {}
+  methods: {
+    openDetailPanel: function() {
+      this.isDetailOpen = true;
+    },
+    closeDetailPanel: function() {
+      this.isDetailOpen = false;
+    }
+  }
 };
 </script>
 
 <style scoped>
+.detail-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.detail-bg {
+  background-color: #ffffff;
+  box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.25);
+  width: 720px;
+  height: 480px;
+  border-radius: 20px;
+  padding: 40px;
+}
 .display-area {
   display: flex;
   align-items: center;
