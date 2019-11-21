@@ -33,7 +33,8 @@ export default {
             callService_line1: 'Please Wait...',
             callService_line2: 'Your service is being called',
             getCheck1: 'Please check at the cashier.',
-            getCheck2: 'Your table number is'
+            getCheck2: 'Your table number is',
+            selectAmount: 'Select Amount' //NEW
         },
         buttonText: {
             back: 'BACK',
@@ -52,6 +53,7 @@ export default {
         onPageText: {
             orderPlaced: 'Your order has been placed',
             willBeServed: 'It will be served within 20 minutes',
+            price: "Price", //NEW
             billSummary: {
                 totalItems: 'Total Items',
                 totalQty: 'Total Quantity',

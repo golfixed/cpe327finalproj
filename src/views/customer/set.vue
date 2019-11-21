@@ -7,7 +7,7 @@
           class="menu-set-card"
           v-for="(data, i) in menu_setList_en"
           :key="i"
-          v-on:click="openDetailPanel();"
+          v-on:click="openDetailPanel();fetchSetDetail(data.menuID);"
         >
           <img class="menu-set-img" :src="data['pictureURL']" />
           <div class="menu-set-card-detail">
@@ -17,10 +17,10 @@
             <h5 class="set-items">{{data.setItem3['count']}} × {{data.setItem3['itemName']}}</h5>
           </div>
           <div>
-            <h4 class="set-price">Price ${{data['price']}}</h4>
+            <h4 class="set-price">{{ $t("messages.onPageText.price") }} ${{data['price']}}</h4>
             <button class="btn-add btn-card">
               <i class="fas fa-plus btn-icon btn-mini-icon"></i>
-              <label class="btn-card-text">ADD</label>
+              <label class="btn-card-text">{{ $t("messages.buttonText.add") }}</label>
             </button>
           </div>
         </li>
@@ -32,7 +32,7 @@
           class="menu-set-card"
           v-for="(data, i) in menu_setList_th"
           :key="i"
-          v-on:click="openDetailPanel();"
+          v-on:click="openDetailPanel();fetchSetDetail(data.menuID);"
         >
           <img class="menu-set-img" :src="data['pictureURL']" />
           <div class="menu-set-card-detail">
@@ -42,10 +42,10 @@
             <h5 class="set-items">{{data.setItem3['count']}} × {{data.setItem3['itemName']}}</h5>
           </div>
           <div>
-            <h4 class="set-price">ราคา ${{data['price']}}</h4>
+            <h4 class="set-price">{{ $t("messages.onPageText.price") }} ${{data['price']}}</h4>
             <button class="btn-add btn-card">
               <i class="fas fa-plus btn-icon btn-mini-icon"></i>
-              <label class="btn-card-text">เพิ่ม</label>
+              <label class="btn-card-text">{{ $t("messages.buttonText.add") }}</label>
             </button>
           </div>
         </li>
@@ -55,16 +55,16 @@
     <div class="detail-container" v-if="isDetailOpen == true">
       <div class="detail-bg">
         <setDetail
-          pictureURL="./static/img/sets/01.png"
-          name="Cheesy Imsukjai"
-          desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco."
-          item1name="Cheese Fried Chicken"
-          item1count="2"
-          item2name="Original Fired Chicken"
-          item2count="8"
-          item3name="Mashed Potato"
-          item3count="2"
-          price="10.99"
+          :pictureURL="setDetail['pictureURL']"
+          :name="setDetail['setTitle']"
+          :desc="setDetail['setDesc']"
+          :item1name="setDetail.setItem1['itemName']"
+          :item1count="setDetail.setItem1['count']"
+          :item2name="setDetail.setItem2['itemName']"
+          :item2count="setDetail.setItem2['count']"
+          :item3name="setDetail.setItem3['itemName']"
+          :item3count="setDetail.setItem2['count']"
+          :price="setDetail['price']"
         />
       </div>
       <button
@@ -100,9 +100,11 @@ export default {
       isDetailOpen: false,
       menu_setList_en: [
         {
-          menuID: 1,
+          menuID: 0,
           pictureURL: "./static/img/sets/01.png",
           setTitle: "Cheesy Imsukjai",
+          setDesc:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
           setItem1: {
             itemName: "Cheesy Chicken",
             count: 2
@@ -113,175 +115,194 @@ export default {
           },
           setItem3: {
             itemName: "Mashed Potato",
+            count: 1
+          },
+          price: 12.99
+        },
+        {
+          menuID: 1,
+          pictureURL: "./static/img/sets/02.png",
+          setTitle: "Sukjai Super Chicken",
+          setDesc:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
+          setItem1: {
+            itemName: "Cheesy Chicken",
+            count: 2
+          },
+          setItem2: {
+            itemName: "Crispy Fish Burger",
+            count: 1
+          },
+          setItem3: {
+            itemName: "Mashed Potato",
+            count: 1
+          },
+          price: 34.99
+        },
+        {
+          menuID: 2,
+          pictureURL: "./static/img/sets/03.png",
+          setTitle: "Cheesy Imsukjai",
+          setDesc:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
+          setItem1: {
+            itemName: "Cheesy Chicken",
+            count: 2
+          },
+          setItem2: {
+            itemName: "Crispy Fish Burger",
+            count: 1
+          },
+          setItem3: {
+            itemName: "Mashed Potato",
+            count: 1
+          },
+          price: 15.99
+        },
+        {
+          menuID: 3,
+          pictureURL: "./static/img/sets/04.png",
+          setTitle: "Cheesy Imsukjai",
+          setDesc:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
+          setItem1: {
+            itemName: "Cheesy Chicken",
+            count: 2
+          },
+          setItem2: {
+            itemName: "Crispy Fish Burger",
+            count: 1
+          },
+          setItem3: {
+            itemName: "Mashed Potato",
+            count: 1
+          },
+          price: 19.99
+        },
+        {
+          menuID: 4,
+          pictureURL: "./static/img/sets/05.png",
+          setTitle: "Cheesy Imsukjai",
+          setDesc:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
+          setItem1: {
+            itemName: "Cheesy Chicken",
+            count: 2
+          },
+          setItem2: {
+            itemName: "Crispy Fish Burger",
+            count: 1
+          },
+          setItem3: {
+            itemName: "Mashed Potato",
+            count: 1
+          },
+          price: 49.99
+        }
+      ],
+      menu_setList_th: [
+        {
+          menuID: 0,
+          pictureURL: "./static/img/sets/01.png",
+          setTitle: "อิ่มสุขใจ ยกบ้าน",
+          setDesc:
+            "ซาดิสม์เจ๊าะแจ๊ะ อิ่มแปร้ไฮเปอร์ เจ๊ออดิทอเรียมวีไอพี พฤหัส ราเมน แจ็กพ็อต จิ๊กซอว์ ดีไซน์เนอร์ จูนกลาส เช็งเม้งแพลน มั้งเทียมทาน จูนดีไซน์เนอร์ซูฮกสตาร์ท ﻿กรรมาชนแบด ไอซ์แพนดา วีเจเฮียบึ้มแครกเกอร์วิภัชภาค อมาตยาธิปไตยแก๊สโซฮอล์ ",
+          setItem1: {
+            itemName: "ไก่ชีส",
+            count: 2
+          },
+          setItem2: {
+            itemName: "เบอร์เกอร์ปลากรอบ",
+            count: 1
+          },
+          setItem3: {
+            itemName: "มันบด",
+            count: 1
+          },
+          price: 50.99
+        },
+        {
+          menuID: 1,
+          pictureURL: "./static/img/sets/02.png",
+          setTitle: "คนเดียวก็อิ่มได้",
+          setDesc:
+            "ซาดิสม์เจ๊าะแจ๊ะ อิ่มแปร้ไฮเปอร์ เจ๊ออดิทอเรียมวีไอพี พฤหัส ราเมน แจ็กพ็อต จิ๊กซอว์ ดีไซน์เนอร์ จูนกลาส เช็งเม้งแพลน มั้งเทียมทาน จูนดีไซน์เนอร์ซูฮกสตาร์ท ﻿กรรมาชนแบด ไอซ์แพนดา วีเจเฮียบึ้มแครกเกอร์วิภัชภาค อมาตยาธิปไตยแก๊สโซฮอล์ ",
+          setItem1: {
+            itemName: "ไก่ชีส",
+            count: 2
+          },
+          setItem2: {
+            itemName: "เบอร์เกอร์ปลากรอบ",
+            count: 1
+          },
+          setItem3: {
+            itemName: "มันบด",
             count: 1
           },
           price: 10.99
         },
         {
           menuID: 2,
-          pictureURL: "./static/img/sets/02.png",
-          setTitle: "Cheesy Imsukjai",
+          pictureURL: "./static/img/sets/03.png",
+          setTitle: "อิ่มสุขใจได้ชีส",
+          setDesc:
+            "ซาดิสม์เจ๊าะแจ๊ะ อิ่มแปร้ไฮเปอร์ เจ๊ออดิทอเรียมวีไอพี พฤหัส ราเมน แจ็กพ็อต จิ๊กซอว์ ดีไซน์เนอร์ จูนกลาส เช็งเม้งแพลน มั้งเทียมทาน จูนดีไซน์เนอร์ซูฮกสตาร์ท ﻿กรรมาชนแบด ไอซ์แพนดา วีเจเฮียบึ้มแครกเกอร์วิภัชภาค อมาตยาธิปไตยแก๊สโซฮอล์ ",
           setItem1: {
-            itemName: "Cheesy Chicken",
+            itemName: "ไก่ชีส",
             count: 2
           },
           setItem2: {
-            itemName: "Crispy Fish Burger",
+            itemName: "เบอร์เกอร์ปลากรอบ",
             count: 1
           },
           setItem3: {
-            itemName: "Mashed Potato",
+            itemName: "มันบด",
             count: 1
           },
-          price: 10.99
+          price: 15.99
         },
         {
           menuID: 3,
-          pictureURL: "./static/img/sets/03.png",
-          setTitle: "Cheesy Imsukjai",
+          pictureURL: "./static/img/sets/04.png",
+          setTitle: "อิ่มสุขใจได้ชีส",
+          setDesc:
+            "ซาดิสม์เจ๊าะแจ๊ะ อิ่มแปร้ไฮเปอร์ เจ๊ออดิทอเรียมวีไอพี พฤหัส ราเมน แจ็กพ็อต จิ๊กซอว์ ดีไซน์เนอร์ จูนกลาส เช็งเม้งแพลน มั้งเทียมทาน จูนดีไซน์เนอร์ซูฮกสตาร์ท ﻿กรรมาชนแบด ไอซ์แพนดา วีเจเฮียบึ้มแครกเกอร์วิภัชภาค อมาตยาธิปไตยแก๊สโซฮอล์ ",
           setItem1: {
-            itemName: "Cheesy Chicken",
+            itemName: "ไก่ชีส",
             count: 2
           },
           setItem2: {
-            itemName: "Crispy Fish Burger",
+            itemName: "เบอร์เกอร์ปลากรอบ",
             count: 1
           },
           setItem3: {
-            itemName: "Mashed Potato",
+            itemName: "มันบด",
             count: 1
           },
           price: 10.99
         },
         {
           menuID: 4,
-          pictureURL: "./static/img/sets/04.png",
-          setTitle: "Cheesy Imsukjai",
-          setItem1: {
-            itemName: "Cheesy Chicken",
-            count: 2
-          },
-          setItem2: {
-            itemName: "Crispy Fish Burger",
-            count: 1
-          },
-          setItem3: {
-            itemName: "Mashed Potato",
-            count: 1
-          },
-          price: 10.99
-        },
-        {
-          menuID: 5,
           pictureURL: "./static/img/sets/05.png",
-          setTitle: "Cheesy Imsukjai",
+          setTitle: "อิ่มสุขใจได้ชีส",
+          setDesc:
+            "ซาดิสม์เจ๊าะแจ๊ะ อิ่มแปร้ไฮเปอร์ เจ๊ออดิทอเรียมวีไอพี พฤหัส ราเมน แจ็กพ็อต จิ๊กซอว์ ดีไซน์เนอร์ จูนกลาส เช็งเม้งแพลน มั้งเทียมทาน จูนดีไซน์เนอร์ซูฮกสตาร์ท ﻿กรรมาชนแบด ไอซ์แพนดา วีเจเฮียบึ้มแครกเกอร์วิภัชภาค อมาตยาธิปไตยแก๊สโซฮอล์ ",
           setItem1: {
-            itemName: "Cheesy Chicken",
+            itemName: "ไก่ชีส",
             count: 2
           },
           setItem2: {
-            itemName: "Crispy Fish Burger",
+            itemName: "เบอร์เกอร์ปลากรอบ",
             count: 1
           },
           setItem3: {
-            itemName: "Mashed Potato",
+            itemName: "มันบด",
             count: 1
           },
           price: 10.99
         }
       ],
-      menu_setList_th: [
-        {
-          menuID: 1,
-          pictureURL: "./static/img/sets/01.png",
-          setTitle: "อิ่มสุขใจได้ชีส",
-          setItem1: {
-            itemName: "ไก่ชีส",
-            count: 2
-          },
-          setItem2: {
-            itemName: "เบอร์เกอร์ปลากรอบ",
-            count: 1
-          },
-          setItem3: {
-            itemName: "มันบด",
-            count: 1
-          },
-          price: 10.99
-        },
-        {
-          menuID: 2,
-          pictureURL: "./static/img/sets/02.png",
-          setTitle: "อิ่มสุขใจได้ชีส",
-          setItem1: {
-            itemName: "ไก่ชีส",
-            count: 2
-          },
-          setItem2: {
-            itemName: "เบอร์เกอร์ปลากรอบ",
-            count: 1
-          },
-          setItem3: {
-            itemName: "มันบด",
-            count: 1
-          },
-          price: 10.99
-        },
-        {
-          menuID: 3,
-          pictureURL: "./static/img/sets/03.png",
-          setTitle: "อิ่มสุขใจได้ชีส",
-          setItem1: {
-            itemName: "ไก่ชีส",
-            count: 2
-          },
-          setItem2: {
-            itemName: "เบอร์เกอร์ปลากรอบ",
-            count: 1
-          },
-          setItem3: {
-            itemName: "มันบด",
-            count: 1
-          },
-          price: 10.99
-        },
-        {
-          menuID: 4,
-          pictureURL: "./static/img/sets/04.png",
-          setTitle: "อิ่มสุขใจได้ชีส",
-          setItem1: {
-            itemName: "ไก่ชีส",
-            count: 2
-          },
-          setItem2: {
-            itemName: "เบอร์เกอร์ปลากรอบ",
-            count: 1
-          },
-          setItem3: {
-            itemName: "มันบด",
-            count: 1
-          },
-          price: 10.99
-        },
-        {
-          menuID: 5,
-          pictureURL: "./static/img/sets/05.png",
-          setTitle: "อิ่มสุขใจได้ชีส",
-          setItem1: {
-            itemName: "ไก่ชีส",
-            count: 2
-          },
-          setItem2: {
-            itemName: "เบอร์เกอร์ปลากรอบ",
-            count: 1
-          },
-          setItem3: {
-            itemName: "มันบด",
-            count: 1
-          },
-          price: 10.99
-        }
-      ]
+      setDetail: {}
     };
   },
   methods: {
@@ -290,6 +311,17 @@ export default {
     },
     closeDetailPanel: function() {
       this.isDetailOpen = false;
+    },
+    fetchSetDetail: function(array) {
+      this.setDetail = {};
+      if (this.currentLang == "en") {
+        this.setDetail = this.menu_setList_en[array];
+      }
+      if (this.currentLang == "th") {
+        this.setDetail = this.menu_setList_th[array];
+      } else {
+        this.setDetail = this.menu_setList_ch[array];
+      }
     }
   }
 };

@@ -61,6 +61,10 @@ export default {
 .btn-icon-grey {
   color: #8c8c8c;
 }
+.btn-text-orange,
+.btn-icon-orange {
+  color: #ff8303;
+}
 
 .btn-text,
 .btn-text-red,
@@ -182,6 +186,9 @@ export default {
   padding: 0;
   padding-top: 20px;
   margin-bottom: 40px;
+}
+.popup-text-title-orange {
+  color: #ff8303;
 }
 .popup-text-icon-container {
   display: flex;

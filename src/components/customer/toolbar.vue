@@ -28,10 +28,13 @@
     </div>
     <div
       class="dim-bg"
-      v-if="isCallServiceOpen == true || isLangOpen == true"
+      v-if="isCallServiceOpen == true || isLangOpen == true || isItemQtyOpen == true"
       v-on:click="closePopup();"
     ></div>
-    <div class="popup-box-container" v-if="isCallServiceOpen == true || isLangOpen == true">
+    <div
+      class="popup-box-container"
+      v-if="isCallServiceOpen == true || isLangOpen == true || isItemQtyOpen == true"
+    >
       <div class="popup-box" v-if="isCallServiceOpen == true">
         <h3 class="popup-text-title">
           {{ $t("messages.popupText.callService_line1") }}
@@ -67,6 +70,18 @@
           <label class="btn-text-grey">{{ $t("messages.buttonText.back") }}</label>
         </button>
       </div>
+      <div class="popup-box" v-if="isItemQtyOpen == true">
+        <h3
+          class="popup-text-title popup-text-title-orange"
+        >{{ $t("messages.popupText.selectAmount") }}</h3>
+        <div class="popup-text-icon-container">
+          <i class="far fa-clock popup-text-icon"></i>
+        </div>
+        <button class="btn-popup btn-confirm" v-on:click="closePopup();">
+          <i class="fas fa-check btn-icon"></i>
+          <label class="btn-text">{{ $t("messages.buttonText.addFull") }}</label>
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -77,10 +92,15 @@ export default {
   data() {
     return {
       isCallServiceOpen: false,
-      isLangOpen: false
+      isLangOpen: false,
+      isItemQtyOpen: true,
+      selectCount: 1
     };
   },
   methods: {
+    openItemQty: function() {
+      this.isItemQtyOen = true;
+    },
     callServiceToggle: function() {
       this.isCallServiceOpen = !this.isCallServiceOpen;
     },
@@ -90,6 +110,7 @@ export default {
     closePopup: function() {
       this.isCallServiceOpen = false;
       this.isLangOpen = false;
+      this.isItemQtyOpen = false;
     },
     switchLang: function(lang) {
       this.$i18n.locale = lang;

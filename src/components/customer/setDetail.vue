@@ -7,10 +7,10 @@
     <label class="item">{{item2count}} × {{item2name}}</label>
     <label class="item">{{item3count}} × {{item3name}}</label>
     <div class="toolbar">
-      <label class="pricetag">Price ${{price}}</label>
+      <label class="pricetag">{{ $t("messages.onPageText.price") }} ${{price}}</label>
       <button class="btn-add btn-card" style="width:fit-content;margin-top: 20px;">
         <i class="fas fa-plus btn-icon btn-mini-icon"></i>
-        <label class="btn-card-text">ADD TO ORDERLIST</label>
+        <label class="btn-card-text">{{ $t("messages.buttonText.addFull") }}</label>
       </button>
     </div>
   </div>
@@ -77,11 +77,11 @@ export default {
 }
 .display-card {
   display: inline-grid;
-  width: 60%;
+  width: 50%;
 }
 .picture {
   position: absolute;
-  right: -15%;
+  right: -10%;
   top: 50%;
   transform: translate(0, -50%);
 }

@@ -33,7 +33,8 @@ export default {
             callService_line1: 'โปรดรอสักครู่...',
             callService_line2: 'พนักงานกำลังมา',
             getCheck1: 'โปรดชำระค่าอาหารที่แคชเชียร์',
-            getCheck2: 'หมายเลขโต๊ะของคุณคือ'
+            getCheck2: 'หมายเลขโต๊ะของคุณคือ',
+            selectCount: 'เลือกจำนวน' //NEW
         },
         buttonText: {
             back: 'ย้อนกลับ',
@@ -52,6 +53,7 @@ export default {
         onPageText: {
             orderPlaced: 'เราได้รับรายการอาหารของคุณแล้ว',
             willBeServed: 'อาหารของคุณกำลังถูกปรุง และจะพร้อมเสิร์ฟภายใน 20 นาที',
+            price: 'ราคา',
             billSummary: {
                 totalItems: 'รายการทั้งหมด',
                 totalQty: 'จำนวนทั้งหมด',

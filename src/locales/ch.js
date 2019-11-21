@@ -33,7 +33,8 @@ export default {
             callService_line1: '稍等一下儿',
             callService_line2: '您的服务正在被调用',
             getCheck1: '请再付款柜台收费',
-            getCheck2: '您的表好是'
+            getCheck2: '您的表好是',
+            selectCount: 'Select Amout' //NEW
         },
         buttonText: {
             back: '回去',
@@ -52,6 +53,7 @@ export default {
         onPageText: {
             orderPlaced: '您的订单已下达',
             willBeServed: '食物将在 20 分钟内送达',
+            price: '价格',
             billSummary: {
                 totalItems: '总项目',
                 totalQty: '总量',
