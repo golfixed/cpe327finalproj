@@ -34,7 +34,9 @@ export default {
             callService_line2: 'Your service is being called',
             getCheck1: 'Please check at the cashier.',
             getCheck2: 'Your table number is',
-            selectAmount: 'Select Amount' //NEW
+            selectAmount: 'Select Amount', //NEW
+            overIncrease: 'This can only be added up to 10 items at a time.',
+            menuDetail: 'Item Detail'
         },
         buttonText: {
             back: 'BACK',
@@ -52,7 +54,7 @@ export default {
         },
         onPageText: {
             orderPlaced: 'Your order has been placed',
-            willBeServed: 'It will be served within 20 minutes',
+            willBeServed: 'It will be served within 15 minutes',
             price: "Price", //NEW
             billSummary: {
                 totalItems: 'Total Items',

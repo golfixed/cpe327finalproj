@@ -34,7 +34,9 @@ export default {
             callService_line2: 'พนักงานกำลังมา',
             getCheck1: 'โปรดชำระค่าอาหารที่แคชเชียร์',
             getCheck2: 'หมายเลขโต๊ะของคุณคือ',
-            selectCount: 'เลือกจำนวน' //NEW
+            selectAmount: 'เลือกจำนวน', //NEW
+            overIncrease: 'เพิ่มได้สูงสุด 10 จำนวนต่อครั้ง', //NEW
+            menuDetail: 'รายละเอียดรายการ'
         },
         buttonText: {
             back: 'ย้อนกลับ',
@@ -48,11 +50,11 @@ export default {
             orderList: 'รายการที่สั่ง',
             placeOrder: 'สั่งอาหาร',
             orderMore: 'สั่งอาหารเพิ่ม',
-            checkOut: 'ชำระเงิน'
+            checkOut: 'สรุปรายการอาหาร'
         },
         onPageText: {
             orderPlaced: 'เราได้รับรายการอาหารของคุณแล้ว',
-            willBeServed: 'อาหารของคุณกำลังถูกปรุง และจะพร้อมเสิร์ฟภายใน 20 นาที',
+            willBeServed: 'อาหารของคุณกำลังถูกปรุง และจะพร้อมเสิร์ฟภายใน 15 นาที',
             price: 'ราคา',
             billSummary: {
                 totalItems: 'รายการทั้งหมด',

@@ -60,7 +60,7 @@
             </button>
           </router-link>
           <button
-            class="btn-popup btn-white"
+            class="btn-popup btn-back"
             style="margin-top: 20px;"
             v-on:click="closeOrderList();"
           >

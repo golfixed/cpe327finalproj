@@ -9,6 +9,8 @@ const Customer_Alacarte = () => import('@/views/customer/alacarte')
 const Customer_Appitizer = () => import('@/views/customer/appitizer')
 const Customer_Drink = () => import('@/views/customer/drink')
 const Customer_ConfirmOrder = () => import('@/views/customer/orderconfirm')
+const Customer_ฺBillSummary = () => import('@/views/customer/billsummary')
+
 
 
 Vue.use(Router)
@@ -53,7 +55,12 @@ const router = new Router({
             path: '/customer/confirmorder',
             name: 'Customer Confirm Order',
             component: Customer_ConfirmOrder,
-        }
+        },
+        {
+            path: '/customer/billsummary',
+            name: 'Customer Bill Summary',
+            component: Customer_ฺBillSummary,
+        },
     ]
 })
 
