@@ -3,55 +3,68 @@
     <h2 class="page-title">{{ $t("messages.pageTitle.set") }}</h2>
     <div class="display-area" v-if="currentLang == 'en'">
       <ul class="card-tray">
-        <li
-          class="menu-set-card"
-          v-for="(data, i) in menu_setList_en"
-          :key="i"
-          v-on:click="openDetailPanel();fetchSetDetail(data.menuID);"
-        >
+        <li class="menu-set-card" v-for="(data, i) in menu_setList_en" :key="i">
           <img class="menu-set-img" :src="data['pictureURL']" />
-          <div class="menu-set-card-detail">
+          <div
+            class="menu-set-card-detail"
+            v-on:click="openDetailPanel();fetchSetDetail(data['menuID']);"
+            style="z-index:2;"
+          >
             <h2 class="set-name">{{data['setTitle']}}</h2>
             <h5 class="set-items">{{data.setItem1['count']}} × {{data.setItem1['itemName']}}</h5>
             <h5 class="set-items">{{data.setItem2['count']}} × {{data.setItem2['itemName']}}</h5>
             <h5 class="set-items">{{data.setItem3['count']}} × {{data.setItem3['itemName']}}</h5>
           </div>
-          <div>
+          <div style="z-index:2; width: fit-content;">
             <h4 class="set-price">{{ $t("messages.onPageText.price") }} ${{data['price']}}</h4>
-            <button class="btn-add btn-card">
+            <button
+              class="btn-add btn-card"
+              v-on:click="openSelectPopup();fetchSetDetail(data['menuID']);"
+              style="z-index:3;"
+            >
               <i class="fas fa-plus btn-icon btn-mini-icon"></i>
               <label class="btn-card-text">{{ $t("messages.buttonText.add") }}</label>
             </button>
           </div>
+          <div class="click-panel" v-on:click="openDetailPanel();fetchSetDetail(data.menuID);"></div>
         </li>
       </ul>
     </div>
     <div class="display-area" v-if="currentLang == 'th'">
       <ul class="card-tray">
-        <li
-          class="menu-set-card"
-          v-for="(data, i) in menu_setList_th"
-          :key="i"
-          v-on:click="openDetailPanel();fetchSetDetail(data.menuID);"
-        >
+        <li class="menu-set-card" v-for="(data, i) in menu_setList_th" :key="i">
           <img class="menu-set-img" :src="data['pictureURL']" />
-          <div class="menu-set-card-detail">
+          <div
+            class="menu-set-card-detail"
+            v-on:click="openDetailPanel();fetchSetDetail(data['menuID']);"
+            style="z-index:2;"
+          >
             <h2 class="set-name">{{data['setTitle']}}</h2>
             <h5 class="set-items">{{data.setItem1['count']}} × {{data.setItem1['itemName']}}</h5>
             <h5 class="set-items">{{data.setItem2['count']}} × {{data.setItem2['itemName']}}</h5>
             <h5 class="set-items">{{data.setItem3['count']}} × {{data.setItem3['itemName']}}</h5>
           </div>
-          <div>
+          <div style="z-index:2; width: fit-content;">
             <h4 class="set-price">{{ $t("messages.onPageText.price") }} ${{data['price']}}</h4>
-            <button class="btn-add btn-card">
+            <button
+              class="btn-add btn-card"
+              v-on:click="openSelectPopup();fetchSetDetail(data['menuID']);"
+              style="z-index:3;"
+            >
               <i class="fas fa-plus btn-icon btn-mini-icon"></i>
               <label class="btn-card-text">{{ $t("messages.buttonText.add") }}</label>
             </button>
           </div>
+          <div class="click-panel" v-on:click="openDetailPanel();fetchSetDetail(data.menuID);"></div>
         </li>
       </ul>
     </div>
-    <div class="dim-bg" v-if="isDetailOpen == true" v-on:click="closeDetailPanel();"></div>
+
+    <div
+      class="dim-bg"
+      v-if="isDetailOpen == true || isSelectQtyOpen == true"
+      v-on:click="closeDetailPanel();closeSelectPopup();"
+    ></div>
     <div class="detail-container" v-if="isDetailOpen == true">
       <div class="detail-bg">
         <setDetail
@@ -75,6 +88,75 @@
         <i class="fas fa-arrow-left btn-icon-grey"></i>
         <label class="btn-text-grey">{{ $t("messages.buttonText.back") }}</label>
       </button>
+    </div>
+    <div class="popup-box-container" v-if="isSelectQtyOpen == true">
+      <div class="popup-box" v-if="isSelectQtyOpen == true">
+        <div class="menudetail-panel">
+          <img class="menudetail-img" :src="setDetail['pictureURL']" />
+          <h3 class="popup-text-title popup-text-title-orange supercenter">{{setDetail['setTitle']}}</h3>
+        </div>
+
+        <div class="numberlocker-panel">
+          <button
+            style="margin-left: 20px;"
+            class="btn-numberlocker locker-active"
+            v-if="selectAmount > 1"
+            v-on:click="selectCountAdjust('minus');"
+          >
+            <label>
+              <i class="fas fa-minus"></i>
+            </label>
+          </button>
+          <button
+            style="margin-left: 20px;"
+            class="btn-numberlocker locker-inactive"
+            v-if="selectAmount == 1"
+          >
+            <label>
+              <i class="fas fa-minus"></i>
+            </label>
+          </button>
+          <div class="numberlocker-bg">
+            <label>{{selectAmount}}</label>
+          </div>
+          <button
+            style="margin-right: 20px;"
+            class="btn-numberlocker locker-active"
+            v-if="selectAmount < 10"
+            v-on:click="selectCountAdjust('add');"
+          >
+            <label>
+              <i class="fas fa-plus"></i>
+            </label>
+          </button>
+          <button
+            style="margin-right: 20px;"
+            class="btn-numberlocker locker-inactive"
+            v-if="selectAmount >= 10"
+          >
+            <label>
+              <i class="fas fa-plus"></i>
+            </label>
+          </button>
+        </div>
+        <div class="warning-box">
+          <label v-if="selectAmount == 10">{{ $t("messages.popupText.overIncrease") }}</label>
+        </div>
+        <div>
+          <button class="btn-popup btn-confirm" v-on:click="closeSelectPopup();">
+            <i class="fas fa-plus btn-icon"></i>
+            <label class="btn-text">{{ $t("messages.buttonText.addFull") }}</label>
+          </button>
+          <button
+            class="btn-popup btn-back"
+            style="margin-top: 20px;"
+            v-on:click="closeSelectPopup();"
+          >
+            <i class="fas fa-arrow-left btn-icon-grey"></i>
+            <label class="btn-text-grey">{{ $t("messages.buttonText.back") }}</label>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -302,10 +384,20 @@ export default {
           price: 10.99
         }
       ],
-      setDetail: {}
+      setDetail: {},
+      isSelectQtyOpen: false,
+      selectAmount: 1,
+      menuDetail: {}
     };
   },
   methods: {
+    selectCountAdjust: function(method) {
+      if (method == "add" && this.selectAmount < 10) {
+        this.selectAmount = this.selectAmount + 1;
+      } else if (method == "minus" && this.selectAmount != 1) {
+        this.selectAmount = this.selectAmount - 1;
+      }
+    },
     openDetailPanel: function() {
       this.isDetailOpen = true;
     },
@@ -322,6 +414,16 @@ export default {
       } else {
         this.setDetail = this.menu_setList_ch[array];
       }
+    },
+    addItem: function(itemID) {
+      this.$store.commit("UPDATE_LIST", itemID);
+    },
+    openSelectPopup: function() {
+      this.isSelectQtyOpen = true;
+      this.selectAmount = 1;
+    },
+    closeSelectPopup: function() {
+      this.isSelectQtyOpen = false;
     }
   }
 };

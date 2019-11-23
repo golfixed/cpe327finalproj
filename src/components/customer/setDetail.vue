@@ -8,10 +8,26 @@
     <label class="item">{{item3count}} × {{item3name}}</label>
     <div class="toolbar">
       <label class="pricetag">{{ $t("messages.onPageText.price") }} ${{price}}</label>
-      <button class="btn-add btn-card" style="width:fit-content;margin-top: 20px;">
+      <button
+        class="btn-add btn-card"
+        v-on:click="openSelectPopup();"
+        style="width:fit-content;margin-top: 20px;"
+      >
         <i class="fas fa-plus btn-icon btn-mini-icon"></i>
         <label class="btn-card-text">{{ $t("messages.buttonText.addFull") }}</label>
       </button>
+    </div>
+    <div class="dim-bg-second" v-if="isSelectOpen == true" v-on:click="closeSelectPopup();"></div>
+    <div class="popup-box-container" v-if="isSelectOpen == true">
+      <div class="popup-box" v-if="isSelectOpen == true">
+        <h3
+          class="popup-text-title popup-text-title-orange"
+        >{{ $t("messages.popupText.selectAmount") }}</h3>
+        <button class="btn-popup btn-confirm" v-on:click="closeSelectPopup();">
+          <i class="fas fa-check btn-icon"></i>
+          <label class="btn-text">{{ $t("messages.buttonText.addFull") }}</label>
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -30,7 +46,20 @@ export default {
     "item3name",
     "item3count",
     "price"
-  ]
+  ],
+  data() {
+    return {
+      isSelectOpen: false
+    };
+  },
+  methods: {
+    openSelectPopup: function() {
+      this.isSelectOpen = true;
+    },
+    closeSelectPopup: function() {
+      this.isSelectOpen = false;
+    }
+  }
 };
 </script>
 
