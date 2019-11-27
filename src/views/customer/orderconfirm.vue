@@ -9,17 +9,13 @@
     </div>
     <div class="button-div" style="width: 370px;">
       <router-link to="/customer/set">
-        <button class="btn-popup btn-back" style="margin-top: 0;" v-on:click="closeOrderList();">
+        <button class="btn-popup btn-back" style="margin-top: 0;">
           <i class="fas fa-plus btn-icon-grey"></i>
           <label class="btn-text-grey">{{ $t("messages.buttonText.orderMore") }}</label>
         </button>
       </router-link>
       <router-link to="/customer/billsummary">
-        <button
-          class="btn-popup btn-confirm"
-          style="margin-top: 20px;"
-          v-on:click="closeOrderList();"
-        >
+        <button class="btn-popup btn-confirm" style="margin-top: 20px;">
           <i class="fas fa-check-double btn-icon"></i>
           <label class="btn-text">{{ $t("messages.buttonText.checkOut") }}</label>
         </button>

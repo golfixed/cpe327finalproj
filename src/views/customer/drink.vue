@@ -52,107 +52,14 @@ export default {
   computed: {
     currentLang: function() {
       return this.$i18n.locale;
+    },
+    menu_itemList_en: function() {
+      return this.$store.state.menu_drink.en;
+    },
+    menu_itemList_th: function() {
+      return this.$store.state.menu_drink.th;
     }
-  },
-  data() {
-    return {
-      menu_itemList_en: [
-        {
-          itemTitle: "Original (140oz)",
-          price: 3.99,
-          pictureURL: "./static/img/drinks/01.png"
-        },
-        {
-          itemTitle: "Sugarless (140oz)",
-          price: 8.99,
-          pictureURL: "./static/img/drinks/02.png"
-        },
-        {
-          itemTitle: "Bottle",
-          price: 12.99,
-          pictureURL: "./static/img/drinks/03.png"
-        },
-        {
-          itemTitle: "Diet (0.5L)",
-          price: 2.99,
-          pictureURL: "./static/img/drinks/04.png"
-        },
-        {
-          itemTitle: "Original (0.5L)",
-          price: 9.99,
-          pictureURL: "./static/img/drinks/05.png"
-        },
-        {
-          itemTitle: "Original (1L)",
-          price: 3.99,
-          pictureURL: "./static/img/drinks/06.png"
-        },
-        {
-          itemTitle: "Max (0.5L)",
-          price: 10.99,
-          pictureURL: "./static/img/drinks/07.png"
-        },
-        {
-          itemTitle: "Max (1L)",
-          price: 8.99,
-          pictureURL: "./static/img/drinks/08.png"
-        },
-        {
-          itemTitle: "Value Pack",
-          price: 20.99,
-          pictureURL: "./static/img/drinks/09.png"
-        }
-      ],
-      menu_itemList_th: [
-        {
-          itemTitle: "ดั้งเดิม (140oz)",
-          price: 5.99,
-          pictureURL: "./static/img/drinks/01.png"
-        },
-        {
-          itemTitle: "น้ำตาลน้อย (140oz)",
-          price: 12.99,
-          pictureURL: "./static/img/drinks/02.png"
-        },
-        {
-          itemTitle: "กระป๋อง",
-          price: 14.99,
-          pictureURL: "./static/img/drinks/03.png"
-        },
-        {
-          itemTitle: "ไดเอท",
-          price: 7.99,
-          pictureURL: "./static/img/drinks/04.png"
-        },
-        {
-          itemTitle: "ดั้งเดิม(0.5L)",
-          price: 15.99,
-          pictureURL: "./static/img/drinks/05.png"
-        },
-        {
-          itemTitle: "ดั้งเดิม(1L)",
-          price: 8.99,
-          pictureURL: "./static/img/drinks/06.png"
-        },
-        {
-          itemTitle: "น้ำตาลน้อย(0.5)",
-          price: 12.99,
-          pictureURL: "./static/img/drinks/07.png"
-        },
-        {
-          itemTitle: "น้ำตาลน้อย(1L)",
-          price: 8.99,
-          pictureURL: "./static/img/drinks/08.png"
-        },
-        {
-          itemTitle: "ชุดสุดคุ้ม",
-          price: 20.99,
-          pictureURL: "./static/img/drinks/09.png"
-        }
-      ]
-    };
-  },
-  methods: {}
+  }
 };
 </script>
 

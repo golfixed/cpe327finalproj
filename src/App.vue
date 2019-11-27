@@ -188,6 +188,9 @@ a:focus {
 .btn-confirm {
   background: #ff8303;
 }
+.btn-confirm-grey {
+  background: #ffffff;
+}
 .btn-white {
   background: #fff;
 }
@@ -262,7 +265,8 @@ a:focus {
 .btn-confirm,
 .btn-white,
 .btn-card,
-.btn-numberlocker {
+.btn-numberlocker,
+.btn-confirm-grey {
   outline: none;
 }
 .withouttab-display {

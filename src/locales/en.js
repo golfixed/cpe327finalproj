@@ -56,6 +56,8 @@ export default {
             orderPlaced: 'Your order has been placed',
             willBeServed: 'It will be served within 15 minutes',
             price: "Price", //NEW
+            clearAll: 'Clear All',
+            noItem: 'No item added to Order List',
             billSummary: {
                 totalItems: 'Total Items',
                 totalQty: 'Total Quantity',

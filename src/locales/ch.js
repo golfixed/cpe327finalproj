@@ -54,6 +54,7 @@ export default {
             orderPlaced: '您的订单已下达',
             willBeServed: '食物将在 15 分钟内送达',
             price: '价格',
+            clearAll: '全部清除',
             billSummary: {
                 totalItems: '总项目',
                 totalQty: '总量',

@@ -66,63 +66,7 @@ export default {
   },
   data() {
     return {
-      currentTab: "promo",
-      promotionList_en: [
-        {
-          promotionID: 1,
-          pictureURL: "./static/img/promotions/en1.png"
-        },
-        {
-          promotionID: 2,
-          pictureURL: "./static/img/promotions/en2.png"
-        },
-        {
-          promotionID: 3,
-          pictureURL: "./static/img/promotions/en3.png"
-        }
-      ],
-      promotionList_th: [
-        {
-          promotionID: 1,
-          pictureURL: "./static/img/promotions/th1.png"
-        },
-        {
-          promotionID: 2,
-          pictureURL: "./static/img/promotions/th2.png"
-        },
-        {
-          promotionID: 3,
-          pictureURL: "./static/img/promotions/th3.png"
-        }
-      ],
-      dealList_en: [
-        {
-          dealID: 1,
-          pictureURL: "./static/img/deals/en1.png"
-        },
-        {
-          dealID: 2,
-          pictureURL: "./static/img/deals/en2.png"
-        },
-        {
-          dealID: 3,
-          pictureURL: "./static/img/deals/en3.png"
-        }
-      ],
-      dealList_th: [
-        {
-          dealID: 1,
-          pictureURL: "./static/img/deals/th1.png"
-        },
-        {
-          dealID: 2,
-          pictureURL: "./static/img/deals/th2.png"
-        },
-        {
-          dealID: 3,
-          pictureURL: "./static/img/deals/th3.png"
-        }
-      ]
+      currentTab: "promo"
     };
   },
   methods: {
@@ -133,6 +77,18 @@ export default {
   computed: {
     currentLang: function() {
       return this.$i18n.locale;
+    },
+    promotionList_en: function() {
+      return this.$store.state.menu_promotion.en;
+    },
+    promotionList_th: function() {
+      return this.$store.state.menu_promotion.th;
+    },
+    dealList_en: function() {
+      return this.$store.state.menu_deal.en;
+    },
+    dealList_th: function() {
+      return this.$store.state.menu_deal.th;
     }
   }
 };

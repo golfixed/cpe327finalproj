@@ -17,16 +17,77 @@
         <label class="btn-card-text">{{ $t("messages.buttonText.addFull") }}</label>
       </button>
     </div>
-    <div class="dim-bg-second" v-if="isSelectOpen == true" v-on:click="closeSelectPopup();"></div>
-    <div class="popup-box-container" v-if="isSelectOpen == true">
-      <div class="popup-box" v-if="isSelectOpen == true">
-        <h3
-          class="popup-text-title popup-text-title-orange"
-        >{{ $t("messages.popupText.selectAmount") }}</h3>
-        <button class="btn-popup btn-confirm" v-on:click="closeSelectPopup();">
-          <i class="fas fa-check btn-icon"></i>
-          <label class="btn-text">{{ $t("messages.buttonText.addFull") }}</label>
-        </button>
+    <div class="dim-bg-second" v-if="isSelectQtyOpen == true" v-on:click="closeSelectPopup();"></div>
+    <div class="popup-box-container" v-if="isSelectQtyOpen == true">
+      <div class="popup-box" v-if="isSelectQtyOpen == true">
+        <div class="menudetail-panel">
+          <img class="menudetail-img" :src="setDetail['pictureURL']" />
+          <h3 class="popup-text-title popup-text-title-orange supercenter">{{setDetail['setTitle']}}</h3>
+        </div>
+
+        <div class="numberlocker-panel">
+          <button
+            style="margin-left: 20px;"
+            class="btn-numberlocker locker-active"
+            v-if="selectAmount > 1"
+            v-on:click="selectCountAdjust('minus');"
+          >
+            <label>
+              <i class="fas fa-minus"></i>
+            </label>
+          </button>
+          <button
+            style="margin-left: 20px;"
+            class="btn-numberlocker locker-inactive"
+            v-if="selectAmount == 1"
+          >
+            <label>
+              <i class="fas fa-minus"></i>
+            </label>
+          </button>
+          <div class="numberlocker-bg">
+            <label>{{selectAmount}}</label>
+          </div>
+          <button
+            style="margin-right: 20px;"
+            class="btn-numberlocker locker-active"
+            v-if="selectAmount < 10"
+            v-on:click="selectCountAdjust('add');"
+          >
+            <label>
+              <i class="fas fa-plus"></i>
+            </label>
+          </button>
+          <button
+            style="margin-right: 20px;"
+            class="btn-numberlocker locker-inactive"
+            v-if="selectAmount >= 10"
+          >
+            <label>
+              <i class="fas fa-plus"></i>
+            </label>
+          </button>
+        </div>
+        <div class="warning-box">
+          <label v-if="selectAmount == 10">{{ $t("messages.popupText.overIncrease") }}</label>
+        </div>
+        <div>
+          <button
+            class="btn-popup btn-confirm"
+            v-on:click="addItem();closeSelectPopup();closeDetailPanel();"
+          >
+            <i class="fas fa-plus btn-icon"></i>
+            <label class="btn-text">{{ $t("messages.buttonText.addFull") }}</label>
+          </button>
+          <button
+            class="btn-popup btn-back"
+            style="margin-top: 20px;"
+            v-on:click="closeSelectPopup();"
+          >
+            <i class="fas fa-arrow-left btn-icon-grey"></i>
+            <label class="btn-text-grey">{{ $t("messages.buttonText.back") }}</label>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -35,29 +96,68 @@
 <script>
 export default {
   name: "sets-detail",
-  props: [
-    "pictureURL",
-    "name",
-    "desc",
-    "item1name",
-    "item1count",
-    "item2name",
-    "item2count",
-    "item3name",
-    "item3count",
-    "price"
-  ],
+  props: {
+    pictureURL: String,
+    name: String,
+    desc: String,
+    item1name: String,
+    item1count: Number,
+    item2name: String,
+    item2count: Number,
+    item3name: String,
+    item3count: Number,
+    price: Number,
+    setDetail: Object
+  },
   data() {
     return {
-      isSelectOpen: false
+      isSelectQtyOpen: false,
+      selectAmount: 1
     };
   },
   methods: {
     openSelectPopup: function() {
-      this.isSelectOpen = true;
+      this.isSelectQtyOpen = true;
     },
     closeSelectPopup: function() {
-      this.isSelectOpen = false;
+      this.isSelectQtyOpen = false;
+    },
+    closeDetailPanel: function(command) {
+      this.$store.commit("DETAILPANEL_TOGGLE", command);
+    },
+    addItem: function() {
+      if (this.setDetail) {
+        const price = this.setDetail.price;
+        const count = this.selectAmount;
+        const orderID = Math.random();
+        this.$store.commit("UPDATE_ORDERLIST", {
+          menuID: orderID,
+          menuName: this.setDetail.setTitle,
+          count: this.selectAmount,
+          price: price * count,
+          item1: {
+            itemName: this.setDetail.setItem1.itemName,
+            count: this.setDetail.setItem1.count
+          },
+          item2: {
+            itemName: this.setDetail.setItem2.itemName,
+            count: this.setDetail.setItem2.count
+          },
+          item3: {
+            itemName: this.setDetail.setItem3.itemName,
+            count: this.setDetail.setItem2.count
+          }
+        });
+      } else {
+        //Nothing to do then
+      }
+    },
+    selectCountAdjust: function(method) {
+      if (method == "add" && this.selectAmount < 10) {
+        this.selectAmount = this.selectAmount + 1;
+      } else if (method == "minus" && this.selectAmount != 1) {
+        this.selectAmount = this.selectAmount - 1;
+      }
     }
   }
 };

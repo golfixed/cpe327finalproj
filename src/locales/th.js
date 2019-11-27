@@ -56,6 +56,8 @@ export default {
             orderPlaced: 'เราได้รับรายการอาหารของคุณแล้ว',
             willBeServed: 'อาหารของคุณกำลังถูกปรุง และจะพร้อมเสิร์ฟภายใน 15 นาที',
             price: 'ราคา',
+            clearAll: 'ล้างทั้งหมด',
+            noItem: 'ยังไม่มีรายการที่สั่ง',
             billSummary: {
                 totalItems: 'รายการทั้งหมด',
                 totalQty: 'จำนวนทั้งหมด',

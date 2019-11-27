@@ -10,6 +10,7 @@ const Customer_Appitizer = () => import('@/views/customer/appitizer')
 const Customer_Drink = () => import('@/views/customer/drink')
 const Customer_ConfirmOrder = () => import('@/views/customer/orderconfirm')
 const Customer_ฺBillSummary = () => import('@/views/customer/billsummary')
+const Customer_ฺThankYou = () => import('@/views/customer/thankyou')
 
 
 
@@ -60,6 +61,11 @@ const router = new Router({
             path: '/customer/billsummary',
             name: 'Customer Bill Summary',
             component: Customer_ฺBillSummary,
+        },
+        {
+            path: '/customer/thankyou',
+            name: 'Customer Thankyou',
+            component: Customer_ฺThankYou,
         },
     ]
 })

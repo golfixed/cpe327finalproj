@@ -52,107 +52,14 @@ export default {
   computed: {
     currentLang: function() {
       return this.$i18n.locale;
+    },
+    menu_itemList_en: function() {
+      return this.$store.state.menu_appitizer.en;
+    },
+    menu_itemList_th: function() {
+      return this.$store.state.menu_appitizer.th;
     }
-  },
-  data() {
-    return {
-      menu_itemList_en: [
-        {
-          itemTitle: "Egg Tart",
-          price: 3.99,
-          pictureURL: "./static/img/appi/01.png"
-        },
-        {
-          itemTitle: "Wingsabb",
-          price: 8.99,
-          pictureURL: "./static/img/appi/02.png"
-        },
-        {
-          itemTitle: "Shrimp",
-          price: 12.99,
-          pictureURL: "./static/img/appi/03.png"
-        },
-        {
-          itemTitle: "Chicken Pop",
-          price: 2.99,
-          pictureURL: "./static/img/appi/04.png"
-        },
-        {
-          itemTitle: "Nuggets",
-          price: 9.99,
-          pictureURL: "./static/img/appi/05.png"
-        },
-        {
-          itemTitle: "Coslow",
-          price: 3.99,
-          pictureURL: "./static/img/appi/06.png"
-        },
-        {
-          itemTitle: "Mashed(M)",
-          price: 10.99,
-          pictureURL: "./static/img/appi/07.png"
-        },
-        {
-          itemTitle: "Mashed(L)",
-          price: 8.99,
-          pictureURL: "./static/img/appi/08.png"
-        },
-        {
-          itemTitle: "Value",
-          price: 20.99,
-          pictureURL: "./static/img/appi/09.png"
-        }
-      ],
-      menu_itemList_th: [
-        {
-          itemTitle: "ทาร์ตไข่",
-          price: 5.99,
-          pictureURL: "./static/img/appi/01.png"
-        },
-        {
-          itemTitle: "วิงซ์แซ่บ",
-          price: 12.99,
-          pictureURL: "./static/img/appi/02.png"
-        },
-        {
-          itemTitle: "โดนัทกุ้ง",
-          price: 14.99,
-          pictureURL: "./static/img/appi/03.png"
-        },
-        {
-          itemTitle: "ไก่ป๊อป",
-          price: 7.99,
-          pictureURL: "./static/img/appi/04.png"
-        },
-        {
-          itemTitle: "นักเก็ต",
-          price: 15.99,
-          pictureURL: "./static/img/appi/05.png"
-        },
-        {
-          itemTitle: "โควสลอร์",
-          price: 8.99,
-          pictureURL: "./static/img/appi/06.png"
-        },
-        {
-          itemTitle: "มันบด(M)",
-          price: 12.99,
-          pictureURL: "./static/img/appi/07.png"
-        },
-        {
-          itemTitle: "มันบด(L)",
-          price: 8.99,
-          pictureURL: "./static/img/appi/08.png"
-        },
-        {
-          itemTitle: "ชุดคุ้ม",
-          price: 20.99,
-          pictureURL: "./static/img/appi/09.png"
-        }
-      ]
-    };
-  },
-  methods: {}
+  }
 };
 </script>
 

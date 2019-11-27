@@ -1,19 +1,467 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import {
-    start
-} from 'repl'
 
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
     state: () => ({
-        orderList: [{}],
+        orderList: [],
+        billList: [{
+                _id: 0,
+                menuName: 'Imsukjai Cheesey Chicken',
+                count: 2,
+                price: 15.99,
+                item1: {
+                    itemName: 'Cheesy Chicken',
+                    count: 2
+                },
+                item2: {
+                    itemName: 'Fried (L)',
+                    count: 1
+                },
+                item3: {
+                    itemName: 'Wingsabb',
+                    count: 2
+                },
+            },
+            {
+                _id: 0,
+                menuName: 'Imsukjai Cheesey Chicken',
+                count: 2,
+                price: 15.99,
+                item1: {
+                    itemName: 'Cheesy Chicken',
+                    count: 2
+                },
+                item2: {
+                    itemName: 'Fried (L)',
+                    count: 1
+                },
+                item3: {
+                    itemName: 'Wingsabb',
+                    count: 2
+                },
+            }, {
+                _id: 0,
+                menuName: 'Imsukjai Cheesey Chicken',
+                count: 2,
+                price: 15.99,
+                item1: {
+                    itemName: 'Cheesy Chicken',
+                    count: 2
+                },
+                item2: {
+                    itemName: 'Fried (L)',
+                    count: 1
+                },
+                item3: {
+                    itemName: 'Wingsabb',
+                    count: 2
+                },
+            }, {
+                _id: 0,
+                menuName: 'Imsukjai Cheesey Chicken',
+                count: 2,
+                price: 15.99,
+                item1: {
+                    itemName: 'Cheesy Chicken',
+                    count: 2
+                },
+                item2: {
+                    itemName: 'Fried (L)',
+                    count: 1
+                },
+                item3: {
+                    itemName: 'Wingsabb',
+                    count: 2
+                },
+            }
+        ],
+        menu_promotion: {
+            en: [{
+                    _id: 0,
+                    pictureURL: './static/img/promotions/en1.png'
+                },
+                {
+                    _id: 1,
+                    pictureURL: './static/img/promotions/en2.png'
+                },
+                {
+                    _id: 2,
+                    pictureURL: './static/img/promotions/en3.png'
+                }
+            ],
+            th: [{
+                    _id: 0,
+                    pictureURL: './static/img/promotions/th1.png'
+                },
+                {
+                    _id: 1,
+                    pictureURL: './static/img/promotions/th2.png'
+                },
+                {
+                    _id: 2,
+                    pictureURL: './static/img/promotions/th3.png'
+                }
+            ]
+        },
+        menu_deal: {
+            en: [{
+                    _id: 0,
+                    pictureURL: "./static/img/deals/en1.png"
+                },
+                {
+                    _id: 1,
+                    pictureURL: "./static/img/deals/en2.png"
+                },
+                {
+                    _id: 2,
+                    pictureURL: "./static/img/deals/en3.png"
+                },
+            ],
+            th: [{
+                    _id: 0,
+                    pictureURL: "./static/img/deals/th1.png"
+                },
+                {
+                    _id: 1,
+                    pictureURL: "./static/img/deals/th2.png"
+                },
+                {
+                    _id: 2,
+                    pictureURL: "./static/img/deals/th3.png"
+                },
+            ]
+        },
+        menu_alacarte: {
+            en: [{
+                    _id: 1,
+                    itemTitle: "Chicken",
+                    price: 3.99,
+                    pictureURL: "./static/img/alacarte/01.png"
+                },
+                {
+                    _id: 2,
+                    itemTitle: "Fish Rice",
+                    price: 8.99,
+                    pictureURL: "./static/img/alacarte/02.png"
+                },
+                {
+                    _id: 3,
+                    itemTitle: "Burger",
+                    price: 12.99,
+                    pictureURL: "./static/img/alacarte/03.png"
+                },
+                {
+                    _id: 4,
+                    itemTitle: "Chicken",
+                    price: 2.99,
+                    pictureURL: "./static/img/alacarte/04.png"
+                },
+                {
+                    _id: 5,
+                    itemTitle: "Burger",
+                    price: 9.99,
+                    pictureURL: "./static/img/alacarte/05.png"
+                },
+                {
+                    _id: 6,
+                    itemTitle: "Burger",
+                    price: 3.99,
+                    pictureURL: "./static/img/alacarte/06.png"
+                },
+                {
+                    _id: 7,
+                    itemTitle: "Spicy",
+                    price: 3.99,
+                    pictureURL: "./static/img/alacarte/07.png"
+                },
+                {
+                    _id: 8,
+                    itemTitle: "Chicken",
+                    price: 3.99,
+                    pictureURL: "./static/img/alacarte/01.png"
+                },
+                {
+                    _id: 9,
+                    itemTitle: "Chicken",
+                    price: 3.99,
+                    pictureURL: "./static/img/alacarte/01.png"
+                },
+            ],
+            th: [{
+                    _id: 1,
+                    itemTitle: "ไก่กรอบ",
+                    price: 5.99,
+                    pictureURL: "./static/img/alacarte/01.png"
+                },
+                {
+                    _id: 2,
+                    itemTitle: "ปลากรอบ",
+                    price: 12.99,
+                    pictureURL: "./static/img/alacarte/02.png"
+                },
+                {
+                    _id: 3,
+                    itemTitle: "เบอร์เกอร์",
+                    price: 14.99,
+                    pictureURL: "./static/img/alacarte/03.png"
+                },
+                {
+                    _id: 4,
+                    itemTitle: "ไก่นุ่ม",
+                    price: 7.99,
+                    pictureURL: "./static/img/alacarte/04.png"
+                },
+                {
+                    _id: 5,
+                    itemTitle: "เบอร์เกอร์",
+                    price: 15.99,
+                    pictureURL: "./static/img/alacarte/05.png"
+                },
+                {
+                    _id: 6,
+                    itemTitle: "เบอร์เกอร์",
+                    price: 8.99,
+                    pictureURL: "./static/img/alacarte/06.png"
+                },
+                {
+                    _id: 7,
+                    itemTitle: "เผ็ดแซ่บ",
+                    price: 12.99,
+                    pictureURL: "./static/img/alacarte/07.png"
+                },
+                {
+                    _id: 8,
+                    itemTitle: "ไก่กรอบ",
+                    price: 5.99,
+                    pictureURL: "./static/img/alacarte/01.png"
+                },
+                {
+                    _id: 9,
+                    itemTitle: "ไก่กรอบ",
+                    price: 5.99,
+                    pictureURL: "./static/img/alacarte/01.png"
+                },
+            ]
+        },
+        menu_appitizer: {
+            en: [{
+                    itemTitle: "Egg Tart",
+                    price: 3.99,
+                    pictureURL: "./static/img/appi/01.png"
+                },
+                {
+                    itemTitle: "Wingsabb",
+                    price: 8.99,
+                    pictureURL: "./static/img/appi/02.png"
+                },
+                {
+                    itemTitle: "Shrimp",
+                    price: 12.99,
+                    pictureURL: "./static/img/appi/03.png"
+                },
+                {
+                    itemTitle: "Chicken Pop",
+                    price: 2.99,
+                    pictureURL: "./static/img/appi/04.png"
+                },
+                {
+                    itemTitle: "Nuggets",
+                    price: 9.99,
+                    pictureURL: "./static/img/appi/05.png"
+                },
+                {
+                    itemTitle: "Coslow",
+                    price: 3.99,
+                    pictureURL: "./static/img/appi/06.png"
+                },
+                {
+                    itemTitle: "Mashed(M)",
+                    price: 10.99,
+                    pictureURL: "./static/img/appi/07.png"
+                },
+                {
+                    itemTitle: "Mashed(L)",
+                    price: 8.99,
+                    pictureURL: "./static/img/appi/08.png"
+                },
+                {
+                    itemTitle: "Value",
+                    price: 20.99,
+                    pictureURL: "./static/img/appi/09.png"
+                }
+            ],
+            th: [{
+                    itemTitle: "ทาร์ตไข่",
+                    price: 5.99,
+                    pictureURL: "./static/img/appi/01.png"
+                },
+                {
+                    itemTitle: "วิงซ์แซ่บ",
+                    price: 12.99,
+                    pictureURL: "./static/img/appi/02.png"
+                },
+                {
+                    itemTitle: "โดนัทกุ้ง",
+                    price: 14.99,
+                    pictureURL: "./static/img/appi/03.png"
+                },
+                {
+                    itemTitle: "ไก่ป๊อป",
+                    price: 7.99,
+                    pictureURL: "./static/img/appi/04.png"
+                },
+                {
+                    itemTitle: "นักเก็ต",
+                    price: 15.99,
+                    pictureURL: "./static/img/appi/05.png"
+                },
+                {
+                    itemTitle: "โควสลอร์",
+                    price: 8.99,
+                    pictureURL: "./static/img/appi/06.png"
+                },
+                {
+                    itemTitle: "มันบด(M)",
+                    price: 12.99,
+                    pictureURL: "./static/img/appi/07.png"
+                },
+                {
+                    itemTitle: "มันบด(L)",
+                    price: 8.99,
+                    pictureURL: "./static/img/appi/08.png"
+                },
+                {
+                    itemTitle: "ชุดคุ้ม",
+                    price: 20.99,
+                    pictureURL: "./static/img/appi/09.png"
+                }
+            ]
+        },
+        menu_drink: {
+            en: [{
+                    itemTitle: "Original (140oz)",
+                    price: 3.99,
+                    pictureURL: "./static/img/drinks/01.png"
+                },
+                {
+                    itemTitle: "Sugarless (140oz)",
+                    price: 8.99,
+                    pictureURL: "./static/img/drinks/02.png"
+                },
+                {
+                    itemTitle: "Bottle",
+                    price: 12.99,
+                    pictureURL: "./static/img/drinks/03.png"
+                },
+                {
+                    itemTitle: "Diet (0.5L)",
+                    price: 2.99,
+                    pictureURL: "./static/img/drinks/04.png"
+                },
+                {
+                    itemTitle: "Original (0.5L)",
+                    price: 9.99,
+                    pictureURL: "./static/img/drinks/05.png"
+                },
+                {
+                    itemTitle: "Original (1L)",
+                    price: 3.99,
+                    pictureURL: "./static/img/drinks/06.png"
+                },
+                {
+                    itemTitle: "Max (0.5L)",
+                    price: 10.99,
+                    pictureURL: "./static/img/drinks/07.png"
+                },
+                {
+                    itemTitle: "Max (1L)",
+                    price: 8.99,
+                    pictureURL: "./static/img/drinks/08.png"
+                },
+                {
+                    itemTitle: "Value Pack",
+                    price: 20.99,
+                    pictureURL: "./static/img/drinks/09.png"
+                }
+            ],
+            th: [{
+                    itemTitle: "ดั้งเดิม (140oz)",
+                    price: 5.99,
+                    pictureURL: "./static/img/drinks/01.png"
+                },
+                {
+                    itemTitle: "น้ำตาลน้อย (140oz)",
+                    price: 12.99,
+                    pictureURL: "./static/img/drinks/02.png"
+                },
+                {
+                    itemTitle: "กระป๋อง",
+                    price: 14.99,
+                    pictureURL: "./static/img/drinks/03.png"
+                },
+                {
+                    itemTitle: "ไดเอท",
+                    price: 7.99,
+                    pictureURL: "./static/img/drinks/04.png"
+                },
+                {
+                    itemTitle: "ดั้งเดิม(0.5L)",
+                    price: 15.99,
+                    pictureURL: "./static/img/drinks/05.png"
+                },
+                {
+                    itemTitle: "ดั้งเดิม(1L)",
+                    price: 8.99,
+                    pictureURL: "./static/img/drinks/06.png"
+                },
+                {
+                    itemTitle: "น้ำตาลน้อย(0.5)",
+                    price: 12.99,
+                    pictureURL: "./static/img/drinks/07.png"
+                },
+                {
+                    itemTitle: "น้ำตาลน้อย(1L)",
+                    price: 8.99,
+                    pictureURL: "./static/img/drinks/08.png"
+                },
+                {
+                    itemTitle: "ชุดสุดคุ้ม",
+                    price: 20.99,
+                    pictureURL: "./static/img/drinks/09.png"
+                }
+            ]
+        },
+        isDetailOpen: false
+
     }),
     mutations: {
-        // SWITCH_ROLE: (state, role) =>  state.user.role = role,
-        // CHANGE_USER: (state, user) => state.user = user,
-        UPDATE_LIST: (state, newlist) => state.orderList = newlist,
+
+        //Order List
+        UPDATE_ORDERLIST: (state, newItem) => {
+            state.orderList.push(newItem);
+        },
+        CLEARALL_ORDERLIST: (state) => state.orderList = [],
+        DELETE_ORDER: (state, index) => {
+            const listcount = state.orderList.length;
+            if (listcount >= 2) {
+                state.orderList.splice(index, 1);
+            } else if (listcount == 1) {
+                state.orderList = [];
+            } else {
+                //do nothing
+            }
+        },
+
+        //Display and Toggle
+        DETAILPANEL_TOGGLE: (state, command) => {
+            if (command == true) {
+                state.isDetailOpen = true;
+            } else {
+                state.isDetailOpen = false;
+            }
+        }
     }
 })
 

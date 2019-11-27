@@ -36,7 +36,7 @@
           <img class="menu-set-img" :src="data['pictureURL']" />
           <div
             class="menu-set-card-detail"
-            v-on:click="openDetailPanel();fetchSetDetail(data['menuID']);"
+            v-on:click="toggleDetailPanel(true);fetchSetDetail(data['menuID']);"
             style="z-index:2;"
           >
             <h2 class="set-name">{{data['setTitle']}}</h2>
@@ -55,7 +55,10 @@
               <label class="btn-card-text">{{ $t("messages.buttonText.add") }}</label>
             </button>
           </div>
-          <div class="click-panel" v-on:click="openDetailPanel();fetchSetDetail(data.menuID);"></div>
+          <div
+            class="click-panel"
+            v-on:click="toggleDetailPanel(true);fetchSetDetail(data.menuID);"
+          ></div>
         </li>
       </ul>
     </div>
@@ -63,7 +66,7 @@
     <div
       class="dim-bg"
       v-if="isDetailOpen == true || isSelectQtyOpen == true"
-      v-on:click="closeDetailPanel();closeSelectPopup();"
+      v-on:click="toggleDetailPanel(false);closeSelectPopup();"
     ></div>
     <div class="detail-container" v-if="isDetailOpen == true">
       <div class="detail-bg">
@@ -78,12 +81,13 @@
           :item3name="setDetail.setItem3['itemName']"
           :item3count="setDetail.setItem2['count']"
           :price="setDetail['price']"
+          :setDetail="setDetail"
         />
       </div>
       <button
         class="btn-popup btn-white"
         style="margin-top: 20px;width:fit-content;padding: 0 20px;"
-        v-on:click="closeDetailPanel();"
+        v-on:click="toggleDetailPanel(false);"
       >
         <i class="fas fa-arrow-left btn-icon-grey"></i>
         <label class="btn-text-grey">{{ $t("messages.buttonText.back") }}</label>
@@ -143,7 +147,7 @@
           <label v-if="selectAmount == 10">{{ $t("messages.popupText.overIncrease") }}</label>
         </div>
         <div>
-          <button class="btn-popup btn-confirm" v-on:click="closeSelectPopup();">
+          <button class="btn-popup btn-confirm" v-on:click="addItem();closeSelectPopup();">
             <i class="fas fa-plus btn-icon"></i>
             <label class="btn-text">{{ $t("messages.buttonText.addFull") }}</label>
           </button>
@@ -175,11 +179,13 @@ export default {
   computed: {
     currentLang: function() {
       return this.$i18n.locale;
+    },
+    isDetailOpen: function() {
+      return this.$store.state.isDetailOpen;
     }
   },
   data() {
     return {
-      isDetailOpen: false,
       menu_setList_en: [
         {
           menuID: 0,
@@ -290,12 +296,12 @@ export default {
           setDesc:
             "ซาดิสม์เจ๊าะแจ๊ะ อิ่มแปร้ไฮเปอร์ เจ๊ออดิทอเรียมวีไอพี พฤหัส ราเมน แจ็กพ็อต จิ๊กซอว์ ดีไซน์เนอร์ จูนกลาส เช็งเม้งแพลน มั้งเทียมทาน จูนดีไซน์เนอร์ซูฮกสตาร์ท ﻿กรรมาชนแบด ไอซ์แพนดา วีเจเฮียบึ้มแครกเกอร์วิภัชภาค อมาตยาธิปไตยแก๊สโซฮอล์ ",
           setItem1: {
-            itemName: "ไก่ชีส",
-            count: 2
+            itemName: "ไก่กรอบรสดั้งเดิม",
+            count: 12
           },
           setItem2: {
-            itemName: "เบอร์เกอร์ปลากรอบ",
-            count: 1
+            itemName: "วิงค์แซ่บ",
+            count: 4
           },
           setItem3: {
             itemName: "มันบด",
@@ -310,12 +316,12 @@ export default {
           setDesc:
             "ซาดิสม์เจ๊าะแจ๊ะ อิ่มแปร้ไฮเปอร์ เจ๊ออดิทอเรียมวีไอพี พฤหัส ราเมน แจ็กพ็อต จิ๊กซอว์ ดีไซน์เนอร์ จูนกลาส เช็งเม้งแพลน มั้งเทียมทาน จูนดีไซน์เนอร์ซูฮกสตาร์ท ﻿กรรมาชนแบด ไอซ์แพนดา วีเจเฮียบึ้มแครกเกอร์วิภัชภาค อมาตยาธิปไตยแก๊สโซฮอล์ ",
           setItem1: {
-            itemName: "ไก่ชีส",
+            itemName: "ไก่ทอดสูตรผู้พัน",
             count: 2
           },
           setItem2: {
-            itemName: "เบอร์เกอร์ปลากรอบ",
-            count: 1
+            itemName: "วิงค์แซ่บ",
+            count: 2
           },
           setItem3: {
             itemName: "มันบด",
@@ -330,12 +336,12 @@ export default {
           setDesc:
             "ซาดิสม์เจ๊าะแจ๊ะ อิ่มแปร้ไฮเปอร์ เจ๊ออดิทอเรียมวีไอพี พฤหัส ราเมน แจ็กพ็อต จิ๊กซอว์ ดีไซน์เนอร์ จูนกลาส เช็งเม้งแพลน มั้งเทียมทาน จูนดีไซน์เนอร์ซูฮกสตาร์ท ﻿กรรมาชนแบด ไอซ์แพนดา วีเจเฮียบึ้มแครกเกอร์วิภัชภาค อมาตยาธิปไตยแก๊สโซฮอล์ ",
           setItem1: {
-            itemName: "ไก่ชีส",
-            count: 2
+            itemName: "ไก่กรอบรสดั้งเดิม",
+            count: 8
           },
           setItem2: {
-            itemName: "เบอร์เกอร์ปลากรอบ",
-            count: 1
+            itemName: "นักเก็ตไก่",
+            count: 5
           },
           setItem3: {
             itemName: "มันบด",
@@ -346,16 +352,16 @@ export default {
         {
           menuID: 3,
           pictureURL: "./static/img/sets/04.png",
-          setTitle: "อิ่มสุขใจได้ชีส",
+          setTitle: "อิ่มยกแกงค์",
           setDesc:
             "ซาดิสม์เจ๊าะแจ๊ะ อิ่มแปร้ไฮเปอร์ เจ๊ออดิทอเรียมวีไอพี พฤหัส ราเมน แจ็กพ็อต จิ๊กซอว์ ดีไซน์เนอร์ จูนกลาส เช็งเม้งแพลน มั้งเทียมทาน จูนดีไซน์เนอร์ซูฮกสตาร์ท ﻿กรรมาชนแบด ไอซ์แพนดา วีเจเฮียบึ้มแครกเกอร์วิภัชภาค อมาตยาธิปไตยแก๊สโซฮอล์ ",
           setItem1: {
-            itemName: "ไก่ชีส",
-            count: 2
+            itemName: "วิงค์แซ่บ",
+            count: 9
           },
           setItem2: {
-            itemName: "เบอร์เกอร์ปลากรอบ",
-            count: 1
+            itemName: "ไก่ทอดสูตรผู้พัน",
+            count: 15
           },
           setItem3: {
             itemName: "มันบด",
@@ -366,15 +372,15 @@ export default {
         {
           menuID: 4,
           pictureURL: "./static/img/sets/05.png",
-          setTitle: "อิ่มสุขใจได้ชีส",
+          setTitle: "อิ่มเดี่ยว แต่อิ่มแน่ๆ",
           setDesc:
             "ซาดิสม์เจ๊าะแจ๊ะ อิ่มแปร้ไฮเปอร์ เจ๊ออดิทอเรียมวีไอพี พฤหัส ราเมน แจ็กพ็อต จิ๊กซอว์ ดีไซน์เนอร์ จูนกลาส เช็งเม้งแพลน มั้งเทียมทาน จูนดีไซน์เนอร์ซูฮกสตาร์ท ﻿กรรมาชนแบด ไอซ์แพนดา วีเจเฮียบึ้มแครกเกอร์วิภัชภาค อมาตยาธิปไตยแก๊สโซฮอล์ ",
           setItem1: {
-            itemName: "ไก่ชีส",
-            count: 2
+            itemName: "ข้าวปลาทอดสไปซี่",
+            count: 1
           },
           setItem2: {
-            itemName: "เบอร์เกอร์ปลากรอบ",
+            itemName: "ไก่ทอดสูตรผู้พัน",
             count: 1
           },
           setItem3: {
@@ -398,11 +404,8 @@ export default {
         this.selectAmount = this.selectAmount - 1;
       }
     },
-    openDetailPanel: function() {
-      this.isDetailOpen = true;
-    },
-    closeDetailPanel: function() {
-      this.isDetailOpen = false;
+    toggleDetailPanel: function(command) {
+      this.$store.commit("DETAILPANEL_TOGGLE", command);
     },
     fetchSetDetail: function(array) {
       this.setDetail = {};
@@ -415,8 +418,32 @@ export default {
         this.setDetail = this.menu_setList_ch[array];
       }
     },
-    addItem: function(itemID) {
-      this.$store.commit("UPDATE_LIST", itemID);
+    addItem: function() {
+      if (this.setDetail) {
+        const price = this.setDetail.price;
+        const count = this.selectAmount;
+        const orderID = Math.random();
+        this.$store.commit("UPDATE_ORDERLIST", {
+          menuID: orderID,
+          menuName: this.setDetail.setTitle,
+          count: this.selectAmount,
+          price: price * count,
+          item1: {
+            itemName: this.setDetail.setItem1.itemName,
+            count: this.setDetail.setItem1.count
+          },
+          item2: {
+            itemName: this.setDetail.setItem2.itemName,
+            count: this.setDetail.setItem2.count
+          },
+          item3: {
+            itemName: this.setDetail.setItem3.itemName,
+            count: this.setDetail.setItem2.count
+          }
+        });
+      } else {
+        //Nothing to do then
+      }
     },
     openSelectPopup: function() {
       this.isSelectQtyOpen = true;
