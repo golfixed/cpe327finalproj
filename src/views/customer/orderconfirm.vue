@@ -14,11 +14,20 @@
           <label class="btn-text-grey">{{ $t("messages.buttonText.orderMore") }}</label>
         </button>
       </router-link>
-      <router-link to="/customer/billsummary">
-        <button class="btn-popup btn-confirm" style="margin-top: 20px;">
+      <router-link to="/customer/billsummary" v-if="this.$store.state.cookList_Done.length >= 1">
+        <button v-on:click="billCheck();" class="btn-popup btn-confirm" style="margin-top: 20px;">
           <i class="fas fa-check-double btn-icon"></i>
           <label class="btn-text">{{ $t("messages.buttonText.checkOut") }}</label>
         </button>
+      </router-link>
+    </div>
+    <div class="switch-to-user supercenter" v-if="this.$store.state.cookList_Done.length == 0">
+      <router-link to="/cooker/dashboard">
+        <i class="fas fa-sync"></i>
+        <label>
+          Tap here to switch to
+          <b>Cooker</b>
+        </label>
       </router-link>
     </div>
   </div>
@@ -30,6 +39,11 @@ export default {
   name: "order-confirm",
   created() {
     this.$emit(`update:layout`, layout_toolbaronly);
+  },
+  methods: {
+    billCheck: function() {
+      this.$store.commit("BILL_CHECK");
+    }
   }
 };
 </script>

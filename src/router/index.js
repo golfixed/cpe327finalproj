@@ -11,6 +11,7 @@ const Customer_Drink = () => import('@/views/customer/drink')
 const Customer_ConfirmOrder = () => import('@/views/customer/orderconfirm')
 const Customer_ฺBillSummary = () => import('@/views/customer/billsummary')
 const Customer_ฺThankYou = () => import('@/views/customer/thankyou')
+const Cooker_Dashboard = () => import('@/views/cooker/dashboard')
 
 
 
@@ -66,6 +67,11 @@ const router = new Router({
             path: '/customer/thankyou',
             name: 'Customer Thankyou',
             component: Customer_ฺThankYou,
+        },
+        {
+            path: '/cooker/dashboard',
+            name: 'Cooker Dashboard',
+            component: Cooker_Dashboard,
         },
     ]
 })

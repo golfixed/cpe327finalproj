@@ -79,16 +79,16 @@ export default {
       return this.$i18n.locale;
     },
     promotionList_en: function() {
-      return this.$store.state.menu_promotion.en;
+      return this.$store.state.menuList.menu_promotion.en;
     },
     promotionList_th: function() {
-      return this.$store.state.menu_promotion.th;
+      return this.$store.state.menuList.menu_promotion.th;
     },
     dealList_en: function() {
-      return this.$store.state.menu_deal.en;
+      return this.$store.state.menuList.menu_deal.en;
     },
     dealList_th: function() {
-      return this.$store.state.menu_deal.th;
+      return this.$store.state.menuList.menu_deal.th;
     }
   }
 };

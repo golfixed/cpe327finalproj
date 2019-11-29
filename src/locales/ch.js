@@ -55,6 +55,7 @@ export default {
             willBeServed: '食物将在 15 分钟内送达',
             price: '价格',
             clearAll: '全部清除',
+            noItem: 'No item added to Order List',
             billSummary: {
                 totalItems: '总项目',
                 totalQty: '总量',

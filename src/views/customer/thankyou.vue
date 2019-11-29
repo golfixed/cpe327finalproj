@@ -10,7 +10,11 @@
       </h1>
       <div class="supercenter">
         <router-link to="/">
-          <button class="btn-back btn-white btn-ty" style="width:fit-content;margin-top: 20px;">
+          <button
+            class="btn-back btn-white btn-ty"
+            style="width:fit-content;margin-top: 20px;"
+            v-on:click="restart();"
+          >
             <i class="fas fa-redo btn-icon btn-icon-red"></i>
             <label class="btn-text-ty">Restart the prototype</label>
           </button>
@@ -34,6 +38,11 @@ export default {
   name: "view-customer-thankyou",
   created() {
     this.$emit(`update:layout`, layout_main);
+  },
+  methods: {
+    restart: function() {
+      this.$store.commit("RESTART");
+    }
   }
 };
 </script>

@@ -14,7 +14,7 @@ Vue.use(VueI18n)
 Vue.use(Vuex)
 
 const i18n = new VueI18n({
-  locale: 'th', // set locale
+  locale: 'en', // set locale
   messages // set locale messages
 })
 

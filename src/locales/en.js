@@ -26,7 +26,7 @@ export default {
             orderBtn: 'Order List'
         },
         popupText: {
-            removeAll: 'Are you sure you want to clear all?',
+            removeAll: 'Clear all',
             removeItem: 'Are you sure you want to remove this item',
             itemAdded: 'Item has been added to Order List',
             selectLang: 'Select a language',
@@ -36,7 +36,8 @@ export default {
             getCheck2: 'Your table number is',
             selectAmount: 'Select Amount', //NEW
             overIncrease: 'This can only be added up to 10 items at a time.',
-            menuDetail: 'Item Detail'
+            menuDetail: 'Item Detail',
+            count: 'Items?'
         },
         buttonText: {
             back: 'BACK',
@@ -66,6 +67,12 @@ export default {
                 serviceCharge: 'Service Charge (15%)',
                 totalPrice: 'TOTAL PRICE',
                 checkBeforeConfirm: 'Please check the list before tap “CONFIRM”'
+            },
+            orderList: {
+                categorySet: 'Set',
+                categoryAlacarte: 'A La\' Carte',
+                categoryAppitizer: 'Appitizer',
+                categoryDrink: 'Drink'
             }
         }
     }

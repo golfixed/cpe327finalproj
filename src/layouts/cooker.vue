@@ -1,16 +1,16 @@
 <template>
-  <div id="layout-customer-toolbar">
+  <div id="layout-cooker-toolbar">
     <div>
       <toolbar />
     </div>
-    <div class="display-toolbar-slot">
+    <div class="display-cooker-slot">
       <slot />
     </div>
   </div>
 </template>
 
 <script>
-import toolbar from "@/components/customer/toolbar.vue";
+import toolbar from "@/components/customer/toolbar_cooker.vue";
 export default {
   name: "cutomer-tablet-screen",
   components: {
@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style>
-#layout-customer {
+#layout-cooker {
   padding: 0;
   margin: 0;
   overflow: hidden;
@@ -28,13 +28,9 @@ export default {
   grid-template-rows: 90px 1fr;
   height: 100vh;
 }
-.order-confirm-display {
+.display-cooker-slot {
   width: 100vw;
-  height: calc(100vh - 170px);
-  flex-direction: column;
-}
-.display-toolbar-slot {
-  width: 100vw;
-  height: calc(100vh - 90px);
+  height: calc(100vh - 160px);
+  background-color: #f6f6f6;
 }
 </style>

@@ -133,6 +133,7 @@ export default {
         this.$store.commit("UPDATE_ORDERLIST", {
           menuID: orderID,
           menuName: this.setDetail.setTitle,
+          type: "set",
           count: this.selectAmount,
           price: price * count,
           item1: {

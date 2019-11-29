@@ -239,6 +239,10 @@ a:focus {
   font-size: 40px;
   text-align: center;
 }
+
+.popup-text-icon-orange {
+  color: #ff8303;
+}
 .lang-tray {
   display: flex;
   justify-content: center;
@@ -409,5 +413,33 @@ a:focus {
   font-size: 24px;
   line-height: 28px;
   color: #000000;
+}
+.two-btn-div {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-gap: 20px;
+  max-width: 390px;
+}
+
+.switch-to-user {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  background-color: #a72828;
+}
+.switch-to-user > a {
+  width: 100%;
+  height: 50px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+  border-radius: 50px;
+}
+.switch-to-user > a > i {
+  margin-right: 15px;
+  font-size: 20px;
 }
 </style>

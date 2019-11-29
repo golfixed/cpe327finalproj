@@ -5,7 +5,7 @@
         <img class="top-bill-cut" src="/static/img/billlist/top.png" />
         <img class="bottom-bill-cut" src="/static/img/billlist/bottom.png" />
         <div class="bill-paper-header">
-          <img src="/static/img/logo.png" class="bill-logo" />
+          <img src="/static/img/Logo.png" class="bill-logo" />
           <div>
             <label class="bill-paper-title">KFC @KMUTT</label>
             <label class="bill-paper-address">m112 Prachutit 56, Bangkok, Thailand</label>
@@ -13,9 +13,9 @@
           </div>
         </div>
         <div class="bill-paper-list">
-          <ul>
-            <li class="bill-menu-list" v-for="(data, i) in billList" :key="i">
-              <div style="display:grid;grid-template-columns: 80% 20%;">
+          <ul v-if="billList.set.length >= 1">
+            <li class="bill-menu-list" v-for="(data, i) in billList.set" :key="i">
+              <div style="display:grid;grid-template-columns: 70% 30%;">
                 <label class="bill-menu-name">{{data['count']}} × {{data['menuName']}}</label>
                 <label class="bill-menu-price">$ {{data['price'].toFixed(2)}}</label>
               </div>
@@ -26,6 +26,14 @@
               </div>
             </li>
           </ul>
+          <ul v-if="billList.alacarte.length >= 1">
+            <li class="bill-menu-list" v-for="(data, i) in billList.alacarte" :key="i">
+              <div style="display:grid;grid-template-columns: 70% 30%;">
+                <label class="bill-menu-name">{{data['count']}} × {{data['itemTitle']}}</label>
+                <label class="bill-menu-price">$ {{data['price'].toFixed(2)}}</label>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -33,13 +41,13 @@
       <div class="sumdetail-div">
         <h1
           class="page-title"
-          style="position: inherit; margin-bottom: 60px;margin-top: 20px;"
+          style="position: inherit; margin-bottom: 100px;margin-top: 20px;"
         >{{$t("messages.pageTitle.billSummary")}}</h1>
         <div class="detail-item">
           <label
             class="detail-item-left detail-list-text"
           >{{$t("messages.onPageText.billSummary.totalItems")}}</label>
-          <label class="detail-item-right detail-list-number">12</label>
+          <label class="detail-item-right detail-list-number">{{total_item}}</label>
         </div>
         <div
           class="detail-item"
@@ -48,31 +56,31 @@
           <label
             class="detail-item-left detail-list-text"
           >{{$t("messages.onPageText.billSummary.totalQty")}}</label>
-          <label class="detail-item-right detail-list-number">12</label>
+          <label class="detail-item-right detail-list-number">{{total_qty}}</label>
         </div>
         <div class="detail-item" style="padding-top: 10px;">
           <label
             class="detail-item-left detail-list-text"
           >{{$t("messages.onPageText.billSummary.subTotal")}}</label>
-          <label class="detail-item-right detail-list-number">540.99</label>
+          <label class="detail-item-right detail-list-number">$ {{total_sub.toFixed(2)}}</label>
         </div>
         <div class="detail-item">
           <label
             class="detail-item-left detail-list-text"
           >{{$t("messages.onPageText.billSummary.vat")}}</label>
-          <label class="detail-item-right detail-list-number">3.99</label>
+          <label class="detail-item-right detail-list-number">$ {{total_Vat.toFixed(2)}}</label>
         </div>
         <div class="detail-item">
           <label
             class="detail-item-left detail-list-text"
           >{{$t("messages.onPageText.billSummary.serviceCharge")}}</label>
-          <label class="detail-item-right detail-list-number">12.99</label>
+          <label class="detail-item-right detail-list-number">$ {{total_service.toFixed(2)}}</label>
         </div>
         <div class="detail-item">
           <label
             class="detail-item-left detail-list-text-hl"
           >{{$t("messages.onPageText.billSummary.totalPrice")}}</label>
-          <label class="detail-item-right detail-list-number-hl">$ 570.00</label>
+          <label class="detail-item-right detail-list-number-hl">$ {{total_price.toFixed(2)}}</label>
         </div>
       </div>
       <div class="button-div">
@@ -83,12 +91,12 @@
           <i class="fas fa-check btn-icon"></i>
           <label class="btn-text">{{ $t("messages.buttonText.confirm") }}</label>
         </button>
-        <router-link to="/customer/confirmorder">
+        <!-- <router-link to="/customer/confirmorder">
           <button class="btn-popup btn-back" style="margin-top: 20px;">
             <i class="fas fa-arrow-left btn-icon-grey"></i>
             <label class="btn-text-grey">{{ $t("messages.buttonText.back") }}</label>
           </button>
-        </router-link>
+        </router-link>-->
       </div>
     </div>
     <div class="dim-bg" v-if="isCheckTableOpen == true " v-on:click="closePopup();"></div>
@@ -100,7 +108,7 @@
           {{ $t("messages.popupText.getCheck2") }}
         </h3>
         <div class="popup-text-icon-container">
-          <label class="table-number">13</label>
+          <label class="table-number">{{this.$store.state.tableNumber - 1}}</label>
         </div>
         <router-link to="/customer/thankyou">
           <button class="btn-popup btn-confirm">
@@ -122,7 +130,63 @@ export default {
   },
   computed: {
     billList: function() {
-      return this.$store.state.orderList;
+      return this.$store.state.billList[0];
+    },
+    total_item: function() {
+      return this.billList.set.length + this.billList.alacarte.length;
+    },
+    total_qty: function() {
+      var set =
+        this.billList.set.reduce((acc, item) => acc + item.price, 0) *
+        this.billList.set.reduce((acc, item) => acc + item.count, 0);
+      var alacarte =
+        this.billList.alacarte.reduce((acc, item) => acc + item.price, 0) *
+        this.billList.alacarte.reduce((acc, item) => acc + item.count, 0);
+      var total = set + alacarte;
+      return total;
+    },
+    total_sub: function() {
+      var set =
+        this.billList.set.reduce((acc, item) => acc + item.price, 0) *
+        this.billList.set.reduce((acc, item) => acc + item.count, 0);
+      var alacarte =
+        this.billList.alacarte.reduce((acc, item) => acc + item.price, 0) *
+        this.billList.alacarte.reduce((acc, item) => acc + item.count, 0);
+      var total = set + alacarte;
+      return total;
+    },
+    total_price: function() {
+      var set =
+        this.billList.set.reduce((acc, item) => acc + item.price, 0) *
+        this.billList.set.reduce((acc, item) => acc + item.count, 0);
+      var alacarte =
+        this.billList.alacarte.reduce((acc, item) => acc + item.price, 0) *
+        this.billList.alacarte.reduce((acc, item) => acc + item.count, 0);
+      var servicecharged = (set + alacarte) * 0.15;
+      var total = servicecharged + (set + alacarte);
+      return total;
+    },
+    total_service: function() {
+      var set =
+        this.billList.set.reduce((acc, item) => acc + item.price, 0) *
+        this.billList.set.reduce((acc, item) => acc + item.count, 0);
+      var alacarte =
+        this.billList.alacarte.reduce((acc, item) => acc + item.price, 0) *
+        this.billList.alacarte.reduce((acc, item) => acc + item.count, 0);
+      var total = set + alacarte;
+      var service = total * 0.15;
+      return service;
+    },
+    total_Vat: function() {
+      var set =
+        this.billList.set.reduce((acc, item) => acc + item.price, 0) *
+        this.billList.set.reduce((acc, item) => acc + item.count, 0);
+      var alacarte =
+        this.billList.alacarte.reduce((acc, item) => acc + item.price, 0) *
+        this.billList.alacarte.reduce((acc, item) => acc + item.count, 0);
+      var total_price = set + alacarte;
+      var vat = total_price * 0.07;
+      return vat;
     }
   },
   data() {
@@ -152,7 +216,7 @@ export default {
 <style scoped>
 .top-bill-cut {
   position: absolute;
-  top: -13px;
+  top: -12px;
   left: 0;
   width: 100%;
 }

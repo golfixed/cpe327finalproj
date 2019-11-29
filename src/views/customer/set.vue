@@ -7,7 +7,7 @@
           <img class="menu-set-img" :src="data['pictureURL']" />
           <div
             class="menu-set-card-detail"
-            v-on:click="openDetailPanel();fetchSetDetail(data['menuID']);"
+            v-on:click="toggleDetailPanel(true);fetchSetDetail(i);"
             style="z-index:2;"
           >
             <h2 class="set-name">{{data['setTitle']}}</h2>
@@ -19,14 +19,14 @@
             <h4 class="set-price">{{ $t("messages.onPageText.price") }} ${{data['price']}}</h4>
             <button
               class="btn-add btn-card"
-              v-on:click="openSelectPopup();fetchSetDetail(data['menuID']);"
+              v-on:click="openSelectPopup();fetchSetDetail(i);"
               style="z-index:3;"
             >
               <i class="fas fa-plus btn-icon btn-mini-icon"></i>
               <label class="btn-card-text">{{ $t("messages.buttonText.add") }}</label>
             </button>
           </div>
-          <div class="click-panel" v-on:click="openDetailPanel();fetchSetDetail(data.menuID);"></div>
+          <div class="click-panel" v-on:click="toggleDetailPanel(true);fetchSetDetail(i);"></div>
         </li>
       </ul>
     </div>
@@ -36,7 +36,7 @@
           <img class="menu-set-img" :src="data['pictureURL']" />
           <div
             class="menu-set-card-detail"
-            v-on:click="toggleDetailPanel(true);fetchSetDetail(data['menuID']);"
+            v-on:click="toggleDetailPanel(true);fetchSetDetail(i);"
             style="z-index:2;"
           >
             <h2 class="set-name">{{data['setTitle']}}</h2>
@@ -48,17 +48,14 @@
             <h4 class="set-price">{{ $t("messages.onPageText.price") }} ${{data['price']}}</h4>
             <button
               class="btn-add btn-card"
-              v-on:click="openSelectPopup();fetchSetDetail(data['menuID']);"
+              v-on:click="openSelectPopup();fetchSetDetail(i);"
               style="z-index:3;"
             >
               <i class="fas fa-plus btn-icon btn-mini-icon"></i>
               <label class="btn-card-text">{{ $t("messages.buttonText.add") }}</label>
             </button>
           </div>
-          <div
-            class="click-panel"
-            v-on:click="toggleDetailPanel(true);fetchSetDetail(data.menuID);"
-          ></div>
+          <div class="click-panel" v-on:click="toggleDetailPanel(true);fetchSetDetail(i);"></div>
         </li>
       </ul>
     </div>
@@ -426,6 +423,7 @@ export default {
         this.$store.commit("UPDATE_ORDERLIST", {
           menuID: orderID,
           menuName: this.setDetail.setTitle,
+          type: "set",
           count: this.selectAmount,
           price: price * count,
           item1: {

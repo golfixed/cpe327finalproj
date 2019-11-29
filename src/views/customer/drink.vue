@@ -54,10 +54,10 @@ export default {
       return this.$i18n.locale;
     },
     menu_itemList_en: function() {
-      return this.$store.state.menu_drink.en;
+      return this.$store.state.menuList.menu_drink.en;
     },
     menu_itemList_th: function() {
-      return this.$store.state.menu_drink.th;
+      return this.$store.state.menuList.menu_drink.th;
     }
   }
 };

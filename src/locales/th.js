@@ -26,7 +26,7 @@ export default {
             orderBtn: 'รายการที่สั่ง'
         },
         popupText: {
-            removeAll: 'แน่ใจหรือไม่ที่จะล้างรายการทั้งหมด',
+            removeAll: 'ล้างทั้งหมด',
             removeItem: 'แน่ใจหรือไม่ที่จะลบรายการนี้',
             itemAdded: 'เพิ่มเข้ารายการที่สั่งเรียบร้อยแล้ว',
             selectLang: 'เลือกภาษา',
@@ -36,7 +36,8 @@ export default {
             getCheck2: 'หมายเลขโต๊ะของคุณคือ',
             selectAmount: 'เลือกจำนวน', //NEW
             overIncrease: 'เพิ่มได้สูงสุด 10 จำนวนต่อครั้ง', //NEW
-            menuDetail: 'รายละเอียดรายการ'
+            menuDetail: 'รายละเอียดรายการ',
+            count: 'รายการหรือไม่'
         },
         buttonText: {
             back: 'ย้อนกลับ',
@@ -50,7 +51,7 @@ export default {
             orderList: 'รายการที่สั่ง',
             placeOrder: 'สั่งอาหาร',
             orderMore: 'สั่งอาหารเพิ่ม',
-            checkOut: 'สรุปรายการอาหาร'
+            checkOut: 'สรุปบิล'
         },
         onPageText: {
             orderPlaced: 'เราได้รับรายการอาหารของคุณแล้ว',
@@ -66,6 +67,12 @@ export default {
                 serviceCharge: 'ค่าบริการ(15%)',
                 totalPrice: 'รวมค่าอาหาร',
                 checkBeforeConfirm: 'โปรดตรวจสอบความถูกต้องก่อนกด “ยืนยัน”'
+            },
+            orderList: {
+                categorySet: 'อาหารชุด',
+                categoryAlacarte: 'จานเดี่ยว',
+                categoryAppitizer: 'ของว่าง',
+                categoryDrink: 'เครื่องดื่ม'
             }
         }
     }
